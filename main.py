@@ -61,7 +61,7 @@ for x in regex:
 
 #limpieza de los datos de funciones
 
-print(funciones)
+# print(funciones)
 for f in funciones:
     deletable_array = []
     temporal_array = []
@@ -121,7 +121,42 @@ for f in funciones:
     filter_funciones.append(temporal_array)
     # print(nombre)
     # print(definicion)
-    print()
+
+#agregar concatenacion a las funciones
+for x in range(len(filter_funciones)):
+    isInt = False
+    #revisar si tiene int
+    for y in filter_funciones[x][1]:
+        if isinstance(y,int):
+            isInt = True
+    if isInt == False:
+        temporal_array = []
+        for y in filter_funciones[x][1]:
+            temporal_array.append(y)
+            temporal_array.append("•")
+        #eliminar las concatenaciones inecesarios del funciones
+        for z in range(len(temporal_array)):
+            if temporal_array[z] == "(":
+                if temporal_array[z+1] == "•":
+                    temporal_array[z+1] = ''
+            if temporal_array[z] == ")":
+                if temporal_array[z-1] == "•":
+                    temporal_array[z-1] = ''
+            if temporal_array[z] == "*":
+                if temporal_array[z-1] == "•":
+                    temporal_array[z-1] = ''
+            if temporal_array[z] == "|":
+                if temporal_array[z-1] == "•":
+                    temporal_array[z-1] = ''
+                if temporal_array[z+1] == "•":
+                    temporal_array[z+1] = ''
+            if temporal_array[z] == "+":
+                if temporal_array[z-1] == "•":
+                    temporal_array[z-1] = ''
+        temporal_array = [element for element in temporal_array if element != '']
+                    
+        filter_funciones[x][1] = temporal_array[:-1]
+
 
 print("funciones: ",filter_funciones)
 print("regex: ", filter_regex)
