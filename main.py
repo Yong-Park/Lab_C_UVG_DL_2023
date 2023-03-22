@@ -129,6 +129,7 @@ for x in range(len(filter_funciones)):
     for y in filter_funciones[x][1]:
         if isinstance(y,int):
             isInt = True
+            
     if isInt == False:
         temporal_array = []
         for y in filter_funciones[x][1]:
@@ -156,6 +157,21 @@ for x in range(len(filter_funciones)):
         temporal_array = [element for element in temporal_array if element != '']
                     
         filter_funciones[x][1] = temporal_array[:-1]
+        
+    else:
+        #revisar si tiene -
+        ascii_array=[]
+        newString_Array = []
+        if '-' in filter_funciones[x][1]:
+            for z in range(len(filter_funciones[x][1])):
+                if filter_funciones[x][1][z] == '-':
+                    for i in range(filter_funciones[x][1][z-1],filter_funciones[x][1][z+1]+1):
+                        ascii_array.append(i)
+        #convertir el ascii en string otra vez
+        for i in ascii_array:
+            newString_Array.append(chr(i))
+        #reemplazarlo en su respectiva posicion
+        filter_funciones[x][1] = newString_Array
 
 
 print("funciones: ",filter_funciones)
