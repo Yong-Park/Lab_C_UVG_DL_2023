@@ -124,14 +124,44 @@ for f in funciones:
         token_actual = ""
         
         for caracter in definicion:
-            if caracter in ("(", ")", "*", "?", "+", "|"):
-                if token_actual:
+            # print("caracter: ",caracter)
+            # print("token_actual: ",token_actual)
+            
+            if "]" in token_actual:
+                palabra = ""
+                array = []
+                array.append("(")
+                
+                token_actual[1:-1]
+                for tok in token_actual:
+                    palabra += tok
+                    if palabra.count("'") == 2:
+                        palabra = palabra[1:-1]
+                        array.append(palabra)
+                        array.append("|")
+                        palabra = ""
+                array[len(array)-1] = ")"
+                tokens.extend(array)
+                token_actual = ""
+            
+            if token_actual.count("'") == 2:
+                if "[" not in token_actual:
+                    token_actual = token_actual[1:-1]
                     tokens.append(token_actual)
                     token_actual = ""
-                tokens.append(caracter)
+            
+            if caracter in ("(", ")", "*", "?", "+", "|","."):
+                if "'" not in token_actual:
+                    if token_actual:
+                        tokens.append(token_actual)
+                        token_actual = ""
+                    tokens.append(caracter)
+                else:
+                    token_actual += caracter
             else:
                 token_actual += caracter
-
+            # print("tokens: ", tokens)
+            # print("==================")
         if token_actual:
             tokens.append(token_actual)
         # print("tokens: ", tokens)
@@ -143,10 +173,13 @@ for f in funciones:
     
     #agregar temporal array a funciones
     filter_funciones.append(temporal_array)
+    # print("filter_funciones antes: ",filter_funciones)
     
     # print(nombre)
     # print(definicion)
 # print("filter_funciones: ", filter_funciones)
+
+
 containPoint = []
 #agregar concatenacion a las funciones
 for x in range(len(filter_funciones)):
@@ -163,26 +196,6 @@ for x in range(len(filter_funciones)):
     if isFunc == False:
         #revisar si tiene .
         result = []
-        for val in range(len(filter_funciones[x][1])):
-            if "." in filter_funciones[x][1][val]:
-                # pointArray = []
-                # temporal = []
-                # temporal.append(x)
-                # temporal.append(val)
-                # pointArray.append(temporal)
-                
-                pointfound = filter_funciones[x][1][val]
-                pointfound = pointfound.split(".")
-                for p in range(len(pointfound)):
-                    if len(pointfound[p]) == 0:
-                        pointfound[p] = '.'
-                result.extend(pointfound)
-            else:
-                result.append(filter_funciones[x][1][val])
-        print("result: ",result)
-        filter_funciones[x][1] = result
-                # print("filter_funciones[x][1][val]: ",filter_funciones[x][1][val])
-        # print("containPoint: ",containPoint)
         
         #comenzar a concatenar
         temporal_array = []
@@ -244,11 +257,18 @@ for x in range(len(filter_funciones)):
         filter_funciones[x][1] = newString_Array
         
         # print("filter_funciones: ",filter_funciones[x][1])
-        
+
+#agregar () al final y inicial 
+# print(filter_funciones)
+for func in filter_funciones:
+    func[1].insert(0,"(")
+    func[1].insert(len(func[1]),")")
 
 print("===================================")
-print("funciones")
+print("funciones:")
 for x in filter_funciones:
     print(x)
-print("regex: ", filter_regex)
+    
+print("\nregex: ", filter_regex)
 
+#comenzar a reemplazar la regex
