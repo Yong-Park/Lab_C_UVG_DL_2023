@@ -268,7 +268,13 @@ print("===================================")
 print("funciones:")
 for x in filter_funciones:
     print(x)
-    
+
+for x in range(len(filter_regex)):
+    if filter_regex[x] == ")":
+        filter_regex[x] = "}"
+    if filter_regex[x] == "(":
+        filter_regex[x] = "{"
+        
 print("\nregex: ", filter_regex)
 
 #comenzar a reemplazar la regex
