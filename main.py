@@ -14,8 +14,8 @@ word = ""
 with open('sir-1.yal', 'r') as file:
     lines = file.readlines()
 
-print(lines)
-print("==============================")
+# print(lines)
+# print("==============================")
 new_lines = []
 
 active_elements = False
@@ -68,8 +68,9 @@ for f in funciones:
     nombre, definicion = f.split("=")
     nombre = nombre.strip()
     definicion = definicion.strip()
-    definicion = definicion.replace('\\t', '\t').replace('\\n', '\n').replace('\\s','\s')
-    #agregar el nombre de la funcion
+    # print("definicion: ", definicion)
+    # definicion = definicion.replace('\\t', '\t').replace('\\n', '\n')
+    # print("definicion modificada: ", definicion)
     temporal_array.append(nombre)
     word= ""
     #realizar revision para a definicion
@@ -81,11 +82,34 @@ for f in funciones:
                 if word.count("'") == 2:
                     word = word[1:-1]
                     # print("word: ", word)
-                    # print(ord(word))
-                    deletable_array.append(ord(word))
+                    # print(len(word))
+                    #estos son los que tienen \
+                    if len(word) == 2:
+                        deletable_array.append(word)
+                    #esto son los que no tienen \
+                    else:
+                        deletable_array.append(ord(word))
                     word = ""
+                    # print("deletable_array: ", deletable_array)
                 if word.count('"') == 2:
-                    deletable_array.append(word[1:-1])
+                    # si tiene \ o no tiene dependiendo de este se trabajara conforme a ello
+                    # print("word: ", word)
+                    word = word[1:-1]
+                    # deletable_array.append(word[1:-1])
+                    temporary_word = ""
+                    #si tiene \ en word
+                    if chr(92) in word:
+                        for y in word:
+                            temporary_word+=y
+                            if temporary_word.count(chr(92)) == 2:
+                                deletable_array.append(temporary_word[:-1])
+                                temporary_word = temporary_word[2:]
+                        if len(temporary_word) != 0:
+                            deletable_array.append(temporary_word)
+                    else:
+                        word = list(word)
+                        deletable_array.extend(word)
+                        
             else:
                 # print("word: ", word)
                 deletable_array.append(word)
@@ -119,18 +143,23 @@ for f in funciones:
     
     #agregar temporal array a funciones
     filter_funciones.append(temporal_array)
+    
     # print(nombre)
     # print(definicion)
-
+# print("filter_funciones: ", filter_funciones)
 #agregar concatenacion a las funciones
 for x in range(len(filter_funciones)):
-    isInt = False
+    isFunc = True
+    
     #revisar si tiene int
-    for y in filter_funciones[x][1]:
-        if isinstance(y,int):
-            isInt = True
-            
-    if isInt == False:
+    for c in ["+","*","(",")","?","|"]:
+        if c in filter_funciones[x][1]:
+            isFunc = False
+        
+    # print("filter_funciones: ", filter_funciones[x][1])
+    # print(isFunc)
+    
+    if isFunc == False:
         temporal_array = []
         for y in filter_funciones[x][1]:
             temporal_array.append(y)
@@ -154,6 +183,9 @@ for x in range(len(filter_funciones)):
             if temporal_array[z] == "+":
                 if temporal_array[z-1] == "•":
                     temporal_array[z-1] = ''
+            if temporal_array[z] == "?":
+                if temporal_array[z-1] == "•":
+                    temporal_array[z-1] = ''
         temporal_array = [element for element in temporal_array if element != '']
                     
         filter_funciones[x][1] = temporal_array[:-1]
@@ -167,13 +199,31 @@ for x in range(len(filter_funciones)):
                 if filter_funciones[x][1][z] == '-':
                     for i in range(filter_funciones[x][1][z-1],filter_funciones[x][1][z+1]+1):
                         ascii_array.append(i)
-        #convertir el ascii en string otra vez
-        for i in ascii_array:
-            newString_Array.append(chr(i))
-        #reemplazarlo en su respectiva posicion
+            #convertir el ascii en string otra vez
+            for i in ascii_array:
+                newString_Array.append(chr(i))
+            #reemplazarlo en su respectiva posicion
+            filter_funciones[x][1] = newString_Array
+        else:
+            for z in range(len(filter_funciones[x][1])):
+                if type(filter_funciones[x][1][z]) == int:
+                    filter_funciones[x][1][z] = chr(filter_funciones[x][1][z])
+                    
+        #añadir los | en cada uno
+        newString_Array = []
+        for y in filter_funciones[x][1]:
+            newString_Array.append(y)
+            newString_Array.append('|')
+            
+        newString_Array = newString_Array[:-1]
         filter_funciones[x][1] = newString_Array
+        
+        print("filter_funciones: ",filter_funciones[x][1])
+        
 
-
-print("funciones: ",filter_funciones)
+print("===================================")
+print("funciones")
+for x in filter_funciones:
+    print(x)
 print("regex: ", filter_regex)
 

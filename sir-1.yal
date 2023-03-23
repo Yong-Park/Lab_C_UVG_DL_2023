@@ -3,9 +3,11 @@
 (* Introducir cualquier header aqui *)
 
 let delim = [' ''\t''\n']
+(* let delims = ["\s\t\n"] *)
 let ws = delim+
 let letter = ['A'-'Z''a'-'z']
 let digit = ['0'-'9']
+(* let digits = ["0123456789"] *)
 let id = letter(letter|digit)*
 
 rule tokens = 
