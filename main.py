@@ -1,5 +1,5 @@
 # nombre del archivo que se abrira
-filename = "sir-1.yal"
+filename = "slr-2.yal"
 
 #aqui se guardaran todos los let
 funciones = []
@@ -11,7 +11,7 @@ filter_regex = []
 #para guardar las palabras y ver que se hara con ello segun la funcion que tengan
 word = ""
 # leer el archivo
-with open('sir-1.yal', 'r') as file:
+with open(filename, 'r') as file:
     lines = file.readlines()
 
 # print(lines)
@@ -147,6 +147,7 @@ for f in funciones:
     # print(nombre)
     # print(definicion)
 # print("filter_funciones: ", filter_funciones)
+containPoint = []
 #agregar concatenacion a las funciones
 for x in range(len(filter_funciones)):
     isFunc = True
@@ -160,6 +161,30 @@ for x in range(len(filter_funciones)):
     # print(isFunc)
     
     if isFunc == False:
+        #revisar si tiene .
+        result = []
+        for val in range(len(filter_funciones[x][1])):
+            if "." in filter_funciones[x][1][val]:
+                # pointArray = []
+                # temporal = []
+                # temporal.append(x)
+                # temporal.append(val)
+                # pointArray.append(temporal)
+                
+                pointfound = filter_funciones[x][1][val]
+                pointfound = pointfound.split(".")
+                for p in range(len(pointfound)):
+                    if len(pointfound[p]) == 0:
+                        pointfound[p] = '.'
+                result.extend(pointfound)
+            else:
+                result.append(filter_funciones[x][1][val])
+        print("result: ",result)
+        filter_funciones[x][1] = result
+                # print("filter_funciones[x][1][val]: ",filter_funciones[x][1][val])
+        # print("containPoint: ",containPoint)
+        
+        #comenzar a concatenar
         temporal_array = []
         for y in filter_funciones[x][1]:
             temporal_array.append(y)
@@ -218,7 +243,7 @@ for x in range(len(filter_funciones)):
         newString_Array = newString_Array[:-1]
         filter_funciones[x][1] = newString_Array
         
-        print("filter_funciones: ",filter_funciones[x][1])
+        # print("filter_funciones: ",filter_funciones[x][1])
         
 
 print("===================================")
