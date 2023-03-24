@@ -278,3 +278,56 @@ for x in range(len(filter_regex)):
 print("\nregex: ", filter_regex)
 
 #comenzar a reemplazar la regex
+final_regex = []
+for rege in filter_regex:
+    existe = False
+    #si la regex existe en las funciones
+    for func in filter_funciones:
+        if rege == func[0]:
+            print("rege: ",rege)
+            regex_temporal = []
+            existe = True
+            regex_temporal.extend(func[1])
+            #seguir revisando si en el regex temporal si dentro de el aun existe valores que pertenecen a las funcioens hasta que ya ninguno no tenga mas
+            largo = 0
+            while (largo != len(regex_temporal)):
+                input()                
+                largo = len(regex_temporal)
+                print("regex_temporal: ", regex_temporal)
+                print("largo: ",largo)   
+                i = 0
+                regex_evaluacion = []
+                while (i < len(regex_temporal)):
+                    
+                    regex_cambiara = []
+                    existe2 = False
+                    for x in filter_funciones:
+                        if regex_temporal[i] == x[0]:
+                            print("regex_temporal[i]: ",regex_temporal[i], i ,len(regex_temporal))
+                            # print("x[1]: ",x[1])
+                            # regex_evaluacion.clear()
+                            regex_evaluacion.extend(regex_temporal[:i-1])
+                            regex_evaluacion.extend(x[1])
+                            regex_cambiara.extend(regex_evaluacion)
+                            regex_cambiara.extend(regex_temporal[i+1:])
+                            i = len(regex_temporal)
+                            regex_temporal = regex_cambiara
+                            print("regex_temporal modificado: ", regex_temporal)
+                            existe2 = True
+                            i = 0
+                            
+                    i+=1
+                            
+                    if existe2 == False:
+                        regex_evaluacion.extend(regex_temporal[i-1])
+
+                    
+
+            final_regex.extend(regex_temporal)
+    #si la regex no existe en las funciones solo agregarlo
+    if existe == False:
+        final_regex.append(rege)
+    print("=============================================")
+    print("final_regex: ",final_regex)
+
+print("\nfinal regex: ", final_regex)
