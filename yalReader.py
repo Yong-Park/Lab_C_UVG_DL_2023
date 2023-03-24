@@ -96,7 +96,7 @@ class YalReader:
                             # print("deletable_array: ", deletable_array)
                         if word.count('"') == 2:
                             # si tiene \ o no tiene dependiendo de este se trabajara conforme a ello
-                            # print("word: ", word)
+                            print("word: ", word)
                             word = word[1:-1]
                             # deletable_array.append(word[1:-1])
                             temporary_word = ""

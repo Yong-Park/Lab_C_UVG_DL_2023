@@ -17,6 +17,8 @@ class Tree:
             if str(symbol) not in "|*•+?":
                 if type(symbol) == int:
                     symbol = chr(symbol)
+                # if "\\" in symbol:
+                #     symbol = symbol[1:]
                 node = Node(symbol)
                 stack.append(node)
             elif symbol == '|':
