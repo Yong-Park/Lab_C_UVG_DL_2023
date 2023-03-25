@@ -16,7 +16,7 @@ class Tree:
             # print("symbol: ", symbol)
             if str(symbol) not in "|*•+?":
                 if type(symbol) == int:
-                    symbol = chr(symbol)
+                    symbol = str(symbol)
                 # if "\\" in symbol:
                 #     symbol = symbol[1:]
                 node = Node(symbol)

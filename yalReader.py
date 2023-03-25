@@ -88,7 +88,11 @@ class YalReader:
                             # print(len(word))
                             #estos son los que tienen \
                             if len(word) == 2:
-                                deletable_array.append(word)
+                                if word == "\s":
+                                    word = ' '
+                                else:
+                                    word = bytes(word, 'utf-8').decode('unicode_escape')
+                                deletable_array.append(ord(word).to_bytes(2, byteorder='little').hex())
                             #esto son los que no tienen \
                             else:
                                 deletable_array.append(ord(word))
@@ -96,7 +100,7 @@ class YalReader:
                             # print("deletable_array: ", deletable_array)
                         if word.count('"') == 2:
                             # si tiene \ o no tiene dependiendo de este se trabajara conforme a ello
-                            print("word: ", word)
+                            # print("word: ", word)
                             word = word[1:-1]
                             # deletable_array.append(word[1:-1])
                             temporary_word = ""
@@ -105,10 +109,20 @@ class YalReader:
                                 for y in word:
                                     temporary_word+=y
                                     if temporary_word.count(chr(92)) == 2:
-                                        deletable_array.append(temporary_word[:-1])
+                                        if temporary_word[:-1] == "\s":
+                                            temp_word = ' '
+                                        else:
+                                            temp_word = bytes(temporary_word[:-1], 'utf-8').decode('unicode_escape')
+                                        print("temp_word: ", ord(temp_word).to_bytes(2, byteorder='little').hex())
+                                        deletable_array.append(ord(temp_word).to_bytes(2, byteorder='little').hex())
                                         temporary_word = temporary_word[2:]
                                 if len(temporary_word) != 0:
-                                    deletable_array.append(temporary_word)
+                                    if temporary_word == "\s":
+                                        temp_word = ' '
+                                    else:
+                                        temp_word = bytes(temporary_word, 'utf-8').decode('unicode_escape')
+                                    print("temp_word: ", ord(temp_word).to_bytes(2, byteorder='little').hex())
+                                    deletable_array.append(ord(temp_word).to_bytes(2, byteorder='little').hex())
                             else:
                                 word = list(word)
                                 deletable_array.extend(word)
@@ -243,10 +257,11 @@ class YalReader:
                         newString_Array.append(chr(i))
                     #reemplazarlo en su respectiva posicion
                     filter_funciones[x][1] = newString_Array
-                else:
-                    for z in range(len(filter_funciones[x][1])):
-                        if type(filter_funciones[x][1][z]) == int:
-                            filter_funciones[x][1][z] = chr(filter_funciones[x][1][z])
+                    #convertir en chr los ascii
+                # else:
+                #     for z in range(len(filter_funciones[x][1])):
+                #         if type(filter_funciones[x][1][z]) == int:
+                #             filter_funciones[x][1][z] = chr(filter_funciones[x][1][z])
                             
                 #añadir los | en cada uno
                 newString_Array = []

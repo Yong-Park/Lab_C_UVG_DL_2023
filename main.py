@@ -3,7 +3,7 @@ from yalReader import *
 from Tree import *
 
 # nombre del archivo que se abrira
-filename = "slr-1.yal"
+filename = "slr-4.yal"
 #leer el archivo yal
 reader = YalReader(filename)
 regex = reader.analize()
