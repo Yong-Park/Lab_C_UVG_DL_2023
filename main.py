@@ -16,3 +16,6 @@ print("\npostfix: ", postfix)
 tree = Tree()
 tree.build_tree_from_postfix(postfix)
 tree.print_tree()
+
+result = tree.left_most()
+print("\n",result)

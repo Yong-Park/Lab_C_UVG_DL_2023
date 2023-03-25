@@ -275,14 +275,29 @@ class YalReader:
             functionNames.append(x[0])
             # print(x)
         functionNames.append('|')
-
+        # print("filter_regex: ",filter_regex)
         for x in range(len(filter_regex)):
             if filter_regex[x] not in functionNames:
                 if len(filter_regex[x]) == 1:
                     # print("filter_regex[x]: ", filter_regex[x])
                     filter_regex[x] = ord(filter_regex[x])
-                
-                
+        
+        # print("filter_regex: ",filter_regex)      
+
+        #agregar los #
+        temporalNewRegex = []
+        for x in filter_regex:
+            if x != "|":
+                temporalNewRegex.append("(")
+                temporalNewRegex.append(x)
+                temporalNewRegex.append("•")
+                temporalNewRegex.append("#"+str(x))
+                temporalNewRegex.append(")")
+            else:
+                temporalNewRegex.append(x)
+        
+        # print("temporalNewRegex: ",temporalNewRegex)
+        filter_regex = temporalNewRegex        
         # print("\nregex: ", filter_regex)
 
         #comenzar a reemplazar la regex
