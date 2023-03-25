@@ -89,13 +89,17 @@ class YalReader:
                             #estos son los que tienen \
                             if len(word) == 2:
                                 if word == "\s":
-                                    word = ' '
+                                    word = bytes(' ', 'utf-8').decode('unicode_escape')
                                 else:
                                     word = bytes(word, 'utf-8').decode('unicode_escape')
                                 deletable_array.append(ord(word).to_bytes(2, byteorder='little').hex())
                             #esto son los que no tienen \
                             else:
-                                deletable_array.append(ord(word))
+                                if word == " ":
+                                    word = bytes(' ', 'utf-8').decode('unicode_escape')
+                                    deletable_array.append(ord(word).to_bytes(2, byteorder='little').hex())
+                                else:
+                                    deletable_array.append(ord(word))
                             word = ""
                             # print("deletable_array: ", deletable_array)
                         if word.count('"') == 2:
@@ -113,7 +117,7 @@ class YalReader:
                                             temp_word = ' '
                                         else:
                                             temp_word = bytes(temporary_word[:-1], 'utf-8').decode('unicode_escape')
-                                        print("temp_word: ", ord(temp_word).to_bytes(2, byteorder='little').hex())
+                                        # print("temp_word: ", ord(temp_word).to_bytes(2, byteorder='little').hex())
                                         deletable_array.append(ord(temp_word).to_bytes(2, byteorder='little').hex())
                                         temporary_word = temporary_word[2:]
                                 if len(temporary_word) != 0:
@@ -121,7 +125,7 @@ class YalReader:
                                         temp_word = ' '
                                     else:
                                         temp_word = bytes(temporary_word, 'utf-8').decode('unicode_escape')
-                                    print("temp_word: ", ord(temp_word).to_bytes(2, byteorder='little').hex())
+                                    # print("temp_word: ", ord(temp_word).to_bytes(2, byteorder='little').hex())
                                     deletable_array.append(ord(temp_word).to_bytes(2, byteorder='little').hex())
                             else:
                                 word = list(word)
