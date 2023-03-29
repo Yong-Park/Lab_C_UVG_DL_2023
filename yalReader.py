@@ -64,7 +64,7 @@ class YalReader:
         # print("filter_regex: ", filter_regex)
         #limpieza de los datos de funciones
 
-        # print(funciones)
+        print(funciones)
         for f in funciones:
             deletable_array = []
             temporal_array = []
@@ -75,6 +75,7 @@ class YalReader:
             # definicion = definicion.replace('\\t', '\t').replace('\\n', '\n')
             # print("definicion modificada: ", definicion)
             temporal_array.append(nombre)
+            # print(temporal_array)
             word= ""
             #realizar revision para a definicion
             if definicion[0] == "[":
@@ -92,12 +93,12 @@ class YalReader:
                                     word = bytes(' ', 'utf-8').decode('unicode_escape')
                                 else:
                                     word = bytes(word, 'utf-8').decode('unicode_escape')
-                                deletable_array.append(ord(word).to_bytes(2, byteorder='little').hex())
+                                deletable_array.append(ord(word))
                             #esto son los que no tienen \
                             else:
                                 if word == " ":
                                     word = bytes(' ', 'utf-8').decode('unicode_escape')
-                                    deletable_array.append(ord(word).to_bytes(2, byteorder='little').hex())
+                                    deletable_array.append(ord(word))
                                 else:
                                     deletable_array.append(ord(word))
                             word = ""
@@ -116,20 +117,27 @@ class YalReader:
                                         if temporary_word[:-1] == "\s":
                                             temp_word = ' '
                                         else:
-                                            temp_word = bytes(temporary_word[:-1], 'utf-8').decode('unicode_escape')
+                                            temp_word = temporary_word[:-1]
                                         # print("temp_word: ", ord(temp_word).to_bytes(2, byteorder='little').hex())
-                                        deletable_array.append(ord(temp_word).to_bytes(2, byteorder='little').hex())
+                                        # deletable_array.append(ord(temp_word).to_bytes(2, byteorder='little').hex())
+                                        word = bytes(temp_word, 'utf-8').decode('unicode_escape')
+                                        deletable_array.append(ord(word))
                                         temporary_word = temporary_word[2:]
                                 if len(temporary_word) != 0:
                                     if temporary_word == "\s":
                                         temp_word = ' '
                                     else:
-                                        temp_word = bytes(temporary_word, 'utf-8').decode('unicode_escape')
+                                        temp_word = temporary_word
                                     # print("temp_word: ", ord(temp_word).to_bytes(2, byteorder='little').hex())
-                                    deletable_array.append(ord(temp_word).to_bytes(2, byteorder='little').hex())
+                                    # deletable_array.append(ord(temp_word).to_bytes(2, byteorder='little').hex())
+                                    word = bytes(temp_word, 'utf-8').decode('unicode_escape')
+                                    deletable_array.append(ord(word))
                             else:
                                 word = list(word)
+                                for w in range(len(word)):
+                                    word[w] = ord(word[w])
                                 deletable_array.extend(word)
+                        # print(deletable_array)
                                 
                     else:
                         # print("word: ", word)
@@ -175,6 +183,8 @@ class YalReader:
                     if caracter in ("(", ")", "*", "?", "+", "|","."):
                         if "'" not in token_actual:
                             if token_actual:
+                                if len(token_actual) == 1:
+                                    token_actual = ord(token_actual)
                                 tokens.append(token_actual)
                                 token_actual = ""
                             tokens.append(caracter)
@@ -256,9 +266,10 @@ class YalReader:
                         if filter_funciones[x][1][z] == '-':
                             for i in range(filter_funciones[x][1][z-1],filter_funciones[x][1][z+1]+1):
                                 ascii_array.append(i)
-                    #convertir el ascii en string otra vez
+                    #convertir el ascii en string otra vez, en este caso lo dejo como ascii
                     for i in ascii_array:
-                        newString_Array.append(chr(i))
+                        newString_Array.append(i)
+                    # print(newString_Array)
                     #reemplazarlo en su respectiva posicion
                     filter_funciones[x][1] = newString_Array
                     #convertir en chr los ascii
