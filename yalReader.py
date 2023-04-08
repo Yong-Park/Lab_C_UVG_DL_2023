@@ -16,13 +16,66 @@ class YalReader:
         with open(self.file, 'r') as file:
             lines = file.readlines()
 
-        # print(lines)
+        newLines = []
+        
+        #separar segun si tiene la palabra rule
+        palabra_temporal = ""
+        agregar = False
+        for line in range(len(lines)):
+            if lines[line].startswith("rule"):
+                agregar = True
+                
+            if agregar:
+                if "rule" not in lines[line]:
+                    # print()
+                    for l in lines[line]:
+                        # if l != "\n" or l !="\t":
+                        palabra_temporal += l
+                    # print("palabra_temporal: ", palabra_temporal)
+                    if "|" in palabra_temporal:
+                        if "{" in palabra_temporal:
+                            if "}" in palabra_temporal:
+                                # print("existe")
+                                # print("palabra: ", palabra_temporal)
+                                palabra_temporal = palabra_temporal.replace("\n"," ").replace("\t"," ")
+                                palabra_temporal+="\n"
+                                newLines.append(palabra_temporal)
+                                palabra_temporal = ""
+        
+                    else:
+                        if "{" in palabra_temporal:
+                            if "}" in palabra_temporal:
+                                # print("existe")
+                                # print("palabra: ", palabra_temporal)
+                                palabra_temporal = palabra_temporal.replace("\n"," ").replace("\t"," ")
+                                palabra_temporal+="\n"
+                                newLines.append(palabra_temporal)
+                                palabra_temporal = ""
+                else:
+                    newLines.append(lines[line])
+
+            else:
+                if lines[line][:2] != "(*":
+                    if lines[line][:3] == "let":
+                        # print(lines[line])
+                        newLines.append(lines[line])
+                        pass
+                    else:
+                        indice = lines[line].find("let")
+                        # lines[line] = lines[line][indice:]
+                        newLines.append(lines[line][indice:])
+                        # print(lines[line][indice:])
+                    # print()
+            # print(lines[line])
+            
+        # print("\nlines: ",lines)
+        # print("\nnewLines: ", newLines)
         # print("==============================")
 
         active_elements = False
 
         #obtener los elementos
-        for line in lines:
+        for line in newLines:
             #obtener los tokens
             if active_elements:
                 temporary_word = ""
@@ -35,6 +88,7 @@ class YalReader:
                                 regex.append(temporary_word)
                                 temporary_word = ""
                         else:
+                            # print("temporary_word: ", temporary_word)
                             regex.append(temporary_word)
             #obtener todas sus funciones
             if line.startswith("let"):
@@ -44,6 +98,7 @@ class YalReader:
                 active_elements = True
                 
         #realizar limpieza de los datos de regex
+        # print("brefore regex: ", regex)
         for x in range(len(regex)):
             temporary_word = ""
             for l in regex[x]:
@@ -55,7 +110,7 @@ class YalReader:
                     temporary_word = temporary_word[:-2]
                     break 
             regex[x] = temporary_word
-
+        # print("regex: ", regex)
         for x in regex:
             if len(x) != 0:
                 if x.count('"') == 2:
@@ -64,14 +119,16 @@ class YalReader:
         # print("filter_regex: ", filter_regex)
         #limpieza de los datos de funciones
 
-        print(funciones)
+        # print(funciones)
         for f in funciones:
             deletable_array = []
             temporal_array = []
             nombre, definicion = f.split("=")
+            # print("\nnombre: ", nombre)
+            # print("definicion: ",definicion)
             nombre = nombre.strip()
             definicion = definicion.strip()
-            # print("definicion: ", definicion)
+            # print("definicion separada: ", definicion)
             # definicion = definicion.replace('\\t', '\t').replace('\\n', '\n')
             # print("definicion modificada: ", definicion)
             temporal_array.append(nombre)
@@ -97,6 +154,7 @@ class YalReader:
                             #esto son los que no tienen \
                             else:
                                 if word == " ":
+                                    # print(word)
                                     word = bytes(' ', 'utf-8').decode('unicode_escape')
                                     deletable_array.append(ord(word))
                                 else:
@@ -189,14 +247,14 @@ class YalReader:
                                 token_actual = ""
                             tokens.append(caracter)
                         else:
-                            token_actual += caracter
+                            token_actual += caracter.strip()
                     else:
-                        token_actual += caracter
+                        token_actual += caracter.strip()
                     # print("tokens: ", tokens)
                     # print("==================")
                 if token_actual:
                     tokens.append(token_actual)
-                # print("tokens: ", tokens)
+                # print("tokens final: ", tokens)
                 
                 deletable_array.extend(tokens)
                 
@@ -290,7 +348,7 @@ class YalReader:
                 # print("filter_funciones: ",filter_funciones[x][1])
 
         #agregar () al final y inicial 
-        # print(filter_funciones)
+        # print("filter_funciones: ", filter_funciones)
         for func in filter_funciones:
             func[1].insert(0,"(")
             func[1].insert(len(func[1]),")")

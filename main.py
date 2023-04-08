@@ -4,14 +4,14 @@ from Tree import *
 from DirectAFD import *
 
 # nombre del archivo que se abrira
-filename = "slr-1.yal"
+filename = "slr-4.yal"
 reader = YalReader(filename)
 regex = reader.analize()
-# print("regex: ", regex)
-#convertirlo en su postfix respectivo
+print("regex: ", regex)
+# convertirlo en su postfix respectivo
 post = Postfix()
 postfix = post.transform_postfix(regex)
-print("\npostfix: ", postfix)
+# print("\npostfix: ", postfix)
 #dibujar su arbol
 tree = Tree()
 tree.build_tree_from_postfix(postfix)
