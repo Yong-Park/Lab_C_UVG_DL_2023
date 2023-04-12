@@ -1,10 +1,11 @@
 from postfix import * 
-from yalReader import *
+# from yalReader import *
+from yalReaderV2 import *
 from Tree import *
 from DirectAFD import *
 
 # nombre del archivo que se abrira
-filename = "slr-4.yal"
+filename = "slr-0.yal"
 reader = YalReader(filename)
 regex = reader.analize()
 print("regex: ", regex)

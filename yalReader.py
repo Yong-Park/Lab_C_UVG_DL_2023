@@ -17,7 +17,7 @@ class YalReader:
             lines = file.readlines()
 
         newLines = []
-        
+        # print("lines: ", lines)
         #separar segun si tiene la palabra rule
         palabra_temporal = ""
         agregar = False
@@ -96,6 +96,9 @@ class YalReader:
             #activar lo de tokens
             if line.startswith("rule"):
                 active_elements = True
+
+        print("funciones: ", funciones)
+        print("regex: ",regex)
                 
         #realizar limpieza de los datos de regex
         # print("brefore regex: ", regex)
@@ -110,7 +113,7 @@ class YalReader:
                     temporary_word = temporary_word[:-2]
                     break 
             regex[x] = temporary_word
-        # print("regex: ", regex)
+        print("regex: ", regex)
         for x in regex:
             if len(x) != 0:
                 if x.count('"') == 2:
