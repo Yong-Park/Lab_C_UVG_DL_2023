@@ -49,10 +49,10 @@ class YalReader:
                         if "rule" in word: 
                             activeRule = True
                         word = ""
-        # print("funciones: ", funciones)
+        print("funciones: ", funciones)
         # for reg in regex:
-        # print("regex: ",regex)
-        # print("++++++++++++++++++++++")
+        print("regex: ",regex)
+        print("++++++++++++++++++++++")
                 
         #realizar limpieza de los datos de regex
         # print("brefore regex: ", regex)
@@ -77,10 +77,10 @@ class YalReader:
                 if x.count('"') == 2:
                     x = x[1:-1]
                 filter_regex.append(x)
-        # print("filter_regex: ", filter_regex)
-        # print("====================")
-        #limpieza de los datos de funciones
+        print("filter_regex: ", filter_regex)
+        print("====================")
 
+        #limpieza de los datos de funciones
         # print(funciones)
         for f in funciones:
             deletable_array = []
