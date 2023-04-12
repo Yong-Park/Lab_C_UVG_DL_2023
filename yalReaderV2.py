@@ -11,6 +11,7 @@ class YalReader:
         regex = []
         filter_regex = []
         #para guardar las palabras y ver que se hara con ello segun la funcion que tengan
+        token_regex = []
         word = ""
         # leer el archivo
         with open(self.file, 'r') as file:
@@ -49,10 +50,31 @@ class YalReader:
                         if "rule" in word: 
                             activeRule = True
                         word = ""
-        print("funciones: ", funciones)
-        # for reg in regex:
-        print("regex: ",regex)
-        print("++++++++++++++++++++++")
+        # print("funciones: ", funciones)
+        # # for reg in regex:
+        # print("regex: ",regex)
+        
+        #obtener los tokens
+        for x in range(len(regex)):
+            temporary_word = ""
+            token_active = False
+            for l in regex[x]:
+                if token_active:
+                    if l == "}":
+                        temporary_word = temporary_word.strip()
+                        token_regex.append(temporary_word)
+                        token_regex.append("|")
+                        temporary_word = ""
+                        break
+                    temporary_word += l
+                    if "return" in temporary_word:
+                        temporary_word = ""
+                if l == "{":
+                    token_active = True
+        token_regex.pop()
+                    
+        # print("token_regex: ",token_regex)
+        # print("++++++++++++++++++++++")
                 
         #realizar limpieza de los datos de regex
         # print("brefore regex: ", regex)
@@ -77,8 +99,8 @@ class YalReader:
                 if x.count('"') == 2:
                     x = x[1:-1]
                 filter_regex.append(x)
-        print("filter_regex: ", filter_regex)
-        print("====================")
+        # print("filter_regex: ", filter_regex)
+        # print("====================")
 
         #limpieza de los datos de funciones
         # print(funciones)
@@ -186,7 +208,9 @@ class YalReader:
                         for tok in token_actual:
                             palabra += tok
                             if palabra.count("'") == 2:
+                                # print("palabra: ", palabra)
                                 palabra = ord(palabra[1:-1])
+                                # print("palabra: ", palabra)
                                 array.append(palabra)
                                 array.append("|")
                                 palabra = ""
@@ -196,7 +220,9 @@ class YalReader:
                     
                     if token_actual.count("'") == 2:
                         if "[" not in token_actual:
-                            token_actual = token_actual[1:-1]
+                            # print("token_actual: ", token_actual)
+                            token_actual = ord(token_actual[1:-1])
+                            # print("token_actual: ", token_actual)
                             tokens.append(token_actual)
                             token_actual = ""
                     
@@ -207,6 +233,8 @@ class YalReader:
                                     token_actual = ord(token_actual)
                                 tokens.append(token_actual)
                                 token_actual = ""
+                            if caracter == ".":
+                                caracter = ord(caracter)
                             tokens.append(caracter)
                         else:
                             token_actual += caracter.strip()
@@ -336,15 +364,15 @@ class YalReader:
 
         #agregar los #
         temporalNewRegex = []
-        for x in filter_regex:
-            if x != "|":
+        for x in range(len(filter_regex)):
+            if filter_regex[x] != "|":
                 temporalNewRegex.append("(")
-                temporalNewRegex.append(x)
+                temporalNewRegex.append(filter_regex[x])
                 temporalNewRegex.append("•")
-                temporalNewRegex.append("#"+str(x))
+                temporalNewRegex.append("#"+str(token_regex[x]))
                 temporalNewRegex.append(")")
             else:
-                temporalNewRegex.append(x)
+                temporalNewRegex.append(filter_regex[x])
         
         # print("temporalNewRegex: ",temporalNewRegex)
         filter_regex = temporalNewRegex        

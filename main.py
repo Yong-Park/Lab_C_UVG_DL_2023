@@ -3,9 +3,10 @@ from postfix import *
 from yalReaderV2 import *
 from Tree import *
 from DirectAFD import *
+from simulation import * 
 
 # nombre del archivo que se abrira
-filename = "slr-0.yal"
+filename = "slr-2.yal"
 reader = YalReader(filename)
 regex = reader.analize()
 print("regex: ", regex)
@@ -24,3 +25,10 @@ afd = DirectAfd(result)
 direct= afd.Dstate()
 # print(direct[1])
 afd.DirectGraph(direct[0],direct[1])
+
+test = "prueba.txt"
+with open(test) as f:
+    testLines = f.readlines()
+    
+simulation = Simulation(direct[0],direct[1],testLines)
+simulation.simulate()
