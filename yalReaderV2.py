@@ -12,6 +12,7 @@ class YalReader:
         filter_regex = []
         #para guardar las palabras y ver que se hara con ello segun la funcion que tengan
         token_regex = []
+        token_functios = []
         word = ""
         # leer el archivo
         with open(self.file, 'r') as file:
@@ -35,6 +36,11 @@ class YalReader:
                         if "(*" in word and "*)" in word:
                             word = ""
                     elif l == "\n":
+                        word = word[:-1]
+                        # print("word: ", word)
+                        if word and len(word)>0:
+                            # print("word: ", len(word))
+                            regex.append(word)
                         word+=" "
             else:
                 word+=l
@@ -52,29 +58,48 @@ class YalReader:
                         word = ""
         # print("funciones: ", funciones)
         # # for reg in regex:
-        # print("regex: ",regex)
+        regex = list(filter(bool, regex))
+        print("regex in test: ",regex)
         
         #obtener los tokens
         for x in range(len(regex)):
+            temporary_array = []
             temporary_word = ""
             token_active = False
             for l in regex[x]:
                 if token_active:
                     if l == "}":
-                        temporary_word = temporary_word.strip()
-                        token_regex.append(temporary_word)
+                        temporary_word = temporary_word.replace("'","").replace('"',"").strip()
+                        temporary_array.append(temporary_word)
+                        token_regex.append(temporary_array[0])
                         token_regex.append("|")
                         temporary_word = ""
+                        token_functios.append(temporary_array)
                         break
                     temporary_word += l
-                    if "return" in temporary_word:
-                        temporary_word = ""
+                else:
+                    temporary_word += l
                 if l == "{":
+                    temporary_word = temporary_word[:-1].replace("'","").replace('"',"").strip()
+                    temporary_array.append(temporary_word)
+                    temporary_word = ""
                     token_active = True
+
+            if temporary_word and "|" not in temporary_word and len(temporary_word) > 0:
+                # print("temporary_word: ",temporary_word)
+                temporary_word = temporary_word.strip()
+                temporary_array.append(temporary_word)
+                temporary_array.append("")
+                token_regex.append(temporary_array[0])
+                token_regex.append("|")
+                token_functios.append(temporary_array)
+
+
         token_regex.pop()
-                    
-        # print("token_regex: ",token_regex)
-        # print("++++++++++++++++++++++")
+
+        print("\ntoken_functios: ", token_functios)            
+        print("\ntoken_regex: ",token_regex)
+        print("++++++++++++++++++++++")
                 
         #realizar limpieza de los datos de regex
         # print("brefore regex: ", regex)

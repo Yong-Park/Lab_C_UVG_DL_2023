@@ -6,9 +6,10 @@ from DirectAFD import *
 from simulation import * 
 
 # nombre del archivo que se abrira
-filename = "slr-2.yal"
+filename = "slr-0.yal"
 reader = YalReader(filename)
 regex = reader.analize()
+print("______________")
 print("regex: ", regex)
 # convertirlo en su postfix respectivo
 post = Postfix()
@@ -29,6 +30,8 @@ afd.DirectGraph(direct[0],direct[1])
 test = "prueba.txt"
 with open(test) as f:
     testLines = f.readlines()
+
+print(direct[1])
     
 simulation = Simulation(direct[0],direct[1],testLines)
 simulation.simulate()
