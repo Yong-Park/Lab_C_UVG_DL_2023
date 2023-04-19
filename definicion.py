@@ -1,0 +1,5 @@
+ID = 5
+PLUS = 6
+TIMES = 7
+LPAREN = 8
+RPAREN = 9

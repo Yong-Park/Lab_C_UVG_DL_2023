@@ -48,7 +48,7 @@ class Simulation:
                         else:
                             
                             indice = self.end.index(position)
-                            self.result.append([self.tokens[indice],text])
+                            self.result.append([self.tokens[indice].replace("#",""),text])
                             # print("result: ",self.result)
                             text = ""
                             position = self.start[0]
@@ -60,10 +60,11 @@ class Simulation:
                 text = ""
             else:
                 indice = self.end.index(position)
-                self.result.append([self.tokens[indice],text])
+                self.result.append([self.tokens[indice].replace("#",""),text])
                 text = ""
                 position = self.start[0]
             
                         
-        print("\n",self.result)
+        # print("\n",self.result)
+        return self.result
                         

@@ -36,11 +36,17 @@ class YalReader:
                         if "(*" in word and "*)" in word:
                             word = ""
                     elif l == "\n":
-                        word = word[:-1]
                         # print("word: ", word)
-                        if word and len(word)>0:
-                            # print("word: ", len(word))
-                            regex.append(word)
+                        if word:
+                            if "{" not in word:
+                                word = word.strip()
+                                if word != "":
+                                    regex.append(word)
+                        # word = word[:-1]
+                        # # print("word: ", word)
+                        # if word and len(word)>0:
+                        #     # print("word: ", len(word))
+                        #     regex.append(word)
                         word+=" "
             else:
                 word+=l
@@ -456,4 +462,4 @@ class YalReader:
             # print("final_regex: ",final_regex)
 
         # print("\nfinal regex: ", final_regex)
-        return final_regex
+        return final_regex,token_functios
