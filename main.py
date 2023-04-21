@@ -7,7 +7,7 @@ from simulation import *
 from scanner import *
 
 # nombre del archivo que se abrira
-filename = "slr-1.yal"
+filename = "slr-0.yal"
 reader = YalReader(filename)
 regex,token_functions = reader.analize()
 print("______________")
@@ -48,9 +48,9 @@ with open("scanner.py", "w") as archivo:
         if code == '':
             archivo.write(f"    if token == '{token}':\n")
             archivo.write("        return ""\n")
-        elif code.startswith("if"):
-            archivo.write(f"    if token == '{token}':\n")
-            archivo.write(f"        {code}\n")
+        # elif code.startswith("if"):
+        #     archivo.write(f"    if token == '{token}':\n")
+        #     archivo.write(f"        {code}\n")
         else:
             archivo.write(f"    if token == '{token}':\n")
             archivo.write(f"        {code}\n")

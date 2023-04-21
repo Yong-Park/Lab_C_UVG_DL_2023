@@ -2,9 +2,9 @@ from definicion import *
 
 def scan(token):
     if token == 'ws':
-        return 
+        return NONE
     if token == 'id':
-        return ID
+        if t.value = 0: return ID else: return NONE
     if token == '+':
         return PLUS
     if token == '*':
@@ -13,4 +13,6 @@ def scan(token):
         return LPAREN
     if token == ')':
         return RPAREN
+    if token == '*)':
+        return STARTCOMMENT
     return f'Token desconocido: {token}'
