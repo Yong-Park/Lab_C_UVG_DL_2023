@@ -4,10 +4,10 @@ from yalReaderV2 import *
 from Tree import *
 from DirectAFD import *
 from simulation import * 
-from scanner import *
+
 
 # nombre del archivo que se abrira
-filename = "slr-0.yal"
+filename = "slr-2.yal"
 reader = YalReader(filename)
 regex,token_functions = reader.analize()
 print("______________")
@@ -39,6 +39,7 @@ simulacion = simulation.simulate()
 
 # Abrir el archivo scanner.py para escribir en él
 with open("scanner.py", "w") as archivo:
+    archivo.truncate(0)
     archivo.write("from definicion import *\n\n")       #llamada de la funcion
     archivo.write("def scan(token):\n")
     for tf in token_functions:
@@ -47,18 +48,22 @@ with open("scanner.py", "w") as archivo:
         # print("toke: ", token)
         if code == '':
             archivo.write(f"    if token == '{token}':\n")
-            archivo.write("        return ""\n")
+            archivo.write("         return ""\n")
         # elif code.startswith("if"):
         #     archivo.write(f"    if token == '{token}':\n")
         #     archivo.write(f"        {code}\n")
         else:
             archivo.write(f"    if token == '{token}':\n")
-            archivo.write(f"        {code}\n")
+            archivo.write("         try:\n")
+            archivo.write(f"            {code}\n")
+            archivo.write("         except NameError:\n")
+            archivo.write("            return f'Token desconocido: {token}'\n")
     archivo.write("    return f'Token desconocido: {token}'\n")
 archivo.close()
 print("simulacion: ", simulacion)
 print("")
 
+from scanner import *
 for s in simulacion:
     scanner = scan(s[0])
     print(f"{s}:{scanner}")

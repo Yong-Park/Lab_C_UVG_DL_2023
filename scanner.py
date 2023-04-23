@@ -2,17 +2,48 @@ from definicion import *
 
 def scan(token):
     if token == 'ws':
-        return NONE
+         try:
+            return WHITESPACE
+         except NameError:
+            return f'Token desconocido: {token}'
     if token == 'id':
-        if t.value = 0: return ID else: return NONE
+         try:
+            return ID
+         except NameError:
+            return f'Token desconocido: {token}'
+    if token == 'number':
+         try:
+            return NUMBER
+         except NameError:
+            return f'Token desconocido: {token}'
     if token == '+':
-        return PLUS
+         try:
+            return PLUS
+         except NameError:
+            return f'Token desconocido: {token}'
+    if token == '-':
+         try:
+            return MINUS
+         except NameError:
+            return f'Token desconocido: {token}'
     if token == '*':
-        return TIMES
+         try:
+            return TIMES
+         except NameError:
+            return f'Token desconocido: {token}'
+    if token == '/':
+         try:
+            return DIV
+         except NameError:
+            return f'Token desconocido: {token}'
     if token == '(':
-        return LPAREN
+         try:
+            return LPAREN
+         except NameError:
+            return f'Token desconocido: {token}'
     if token == ')':
-        return RPAREN
-    if token == '*)':
-        return STARTCOMMENT
+         try:
+            return RPAREN
+         except NameError:
+            return f'Token desconocido: {token}'
     return f'Token desconocido: {token}'
