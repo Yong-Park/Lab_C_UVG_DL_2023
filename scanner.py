@@ -2,18 +2,10 @@ from definicion import *
 
 def scan(token):
     if token == 'ws':
-         try:
-            return WHITESPACE
-         except NameError:
-            return f'Token desconocido: {token}'
+         return 
     if token == 'id':
          try:
             return ID
-         except NameError:
-            return f'Token desconocido: {token}'
-    if token == 'number':
-         try:
-            return NUMBER
          except NameError:
             return f'Token desconocido: {token}'
     if token == '+':
@@ -21,19 +13,9 @@ def scan(token):
             return PLUS
          except NameError:
             return f'Token desconocido: {token}'
-    if token == '-':
-         try:
-            return MINUS
-         except NameError:
-            return f'Token desconocido: {token}'
     if token == '*':
          try:
             return TIMES
-         except NameError:
-            return f'Token desconocido: {token}'
-    if token == '/':
-         try:
-            return DIV
          except NameError:
             return f'Token desconocido: {token}'
     if token == '(':

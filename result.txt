@@ -1,0 +1,28 @@
+['error lexico', '1']:Token desconocido: error lexico
+['error lexico', '2']:Token desconocido: error lexico
+['ws', ' ']:None
+['error lexico', '1']:Token desconocido: error lexico
+['error lexico', '5']:Token desconocido: error lexico
+['ws', ' ']:None
+['error lexico', '3']:Token desconocido: error lexico
+['error lexico', '.']:Token desconocido: error lexico
+['error lexico', '2']:Token desconocido: error lexico
+['id', 'E']:5
+['+', '+']:6
+['error lexico', '1']:Token desconocido: error lexico
+['error lexico', '5']:Token desconocido: error lexico
+['ws', '\n\n']:None
+['id', 'hol5a']:5
+['ws', ' ']:None
+['id', 'mundo']:5
+['ws', '\n\n']:None
+['id', 'Como']:5
+['ws', ' ']:None
+['id', 'estan']:5
+['ws', '\n']:None
+['id', 'David12D']:5
+['ws', '\n\n']:None
+['id', 'if']:5
+['ws', '\n\n']:None
+['error lexico', '1']:Token desconocido: error lexico
+['error lexico', '5']:Token desconocido: error lexico

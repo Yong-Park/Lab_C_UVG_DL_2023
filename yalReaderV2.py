@@ -66,12 +66,13 @@ class YalReader:
         # # for reg in regex:
         regex = list(filter(bool, regex))
         print("regex in test: ",regex)
-        
         #obtener los tokens
         for x in range(len(regex)):
+            print(regex[x])
             temporary_array = []
             temporary_word = ""
             token_active = False
+            
             for l in regex[x]:
                 if token_active:
                     if l == "}":
@@ -400,6 +401,7 @@ class YalReader:
                 temporalNewRegex.append("(")
                 temporalNewRegex.append(filter_regex[x])
                 temporalNewRegex.append("•")
+                # print("token_regex[x]: ",token_regex[x])
                 temporalNewRegex.append("#"+str(token_regex[x]))
                 temporalNewRegex.append(")")
             else:
@@ -457,9 +459,28 @@ class YalReader:
                     final_regex.extend(regex_temporal)
             #si la regex no existe en las funciones solo agregarlo
             if existe == False:
-                final_regex.append(rege)
+                print("rege: ",rege)
+                if isinstance(rege, str):
+                    if len(rege) > 1:
+                        if '#' not in rege:
+                            print(rege)
+                            temporal = []
+                            temporal.append("(")
+                            for i in rege:
+                                temporal.append(ord(i))
+                                temporal.append("•")
+                            temporal.pop(len(temporal)-1)
+                            temporal.append(")")
+                            print("temporal: ",temporal)
+                            final_regex.extend(temporal)
+                        else:
+                            final_regex.append(rege)
+                    else:
+                        final_regex.append(rege)
+                else:
+                    final_regex.append(rege)
             # print("=============================================")
-            # print("final_regex: ",final_regex)
+            print("final_regex: ",final_regex)
 
         # print("\nfinal regex: ", final_regex)
         return final_regex,token_functios

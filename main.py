@@ -7,7 +7,7 @@ from simulation import *
 
 
 # nombre del archivo que se abrira
-filename = "slr-2.yal"
+filename = "sr-yal.yal"
 reader = YalReader(filename)
 regex,token_functions = reader.analize()
 print("______________")
@@ -28,7 +28,7 @@ direct= afd.Dstate()
 # print(direct[1])
 afd.DirectGraph(direct[0],direct[1])
 
-test = "prueba.txt"
+test = "slr-1.yal"
 with open(test) as f:
     testLines = f.readlines()
 
@@ -64,6 +64,8 @@ print("simulacion: ", simulacion)
 print("")
 
 from scanner import *
-for s in simulacion:
-    scanner = scan(s[0])
-    print(f"{s}:{scanner}")
+
+with open("result.txt", "w") as archivo:
+    for s in simulacion:
+        scanner = scan(s[0])
+        archivo.write(f"{s}:{scanner}\n")
