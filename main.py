@@ -5,13 +5,12 @@ from Tree import *
 from DirectAFD import *
 from simulation import * 
 
-
 # nombre del archivo que se abrira
 filename = "sr-yal.yal"
 reader = YalReader(filename)
 regex,token_functions = reader.analize()
-print("______________")
-print("regex: ", regex)
+# print("______________")
+# print("regex: ", regex)
 # convertirlo en su postfix respectivo
 post = Postfix()
 postfix = post.transform_postfix(regex)
@@ -60,8 +59,8 @@ with open("scanner.py", "w") as archivo:
             archivo.write("            return f'Token desconocido: {token}'\n")
     archivo.write("    return f'Token desconocido: {token}'\n")
 archivo.close()
-print("simulacion: ", simulacion)
-print("")
+# print("simulacion: ", simulacion)
+# print("")
 
 from scanner import *
 

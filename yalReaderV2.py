@@ -23,9 +23,13 @@ class YalReader:
         for l in lines:
             if activeRule:
                 if l == "|":
-                    if word != "":
-                        word=""
-                    regex.append(l.strip())
+                    if regex[len(regex)-1] == "|":
+                        word += l
+                        pass
+                    else:
+                        if word != "":
+                            word=""
+                        regex.append(l.strip())
                 else:
                     if l not in ["\n",'\t'] : 
                         word += l
@@ -65,10 +69,10 @@ class YalReader:
         # print("funciones: ", funciones)
         # # for reg in regex:
         regex = list(filter(bool, regex))
-        print("regex in test: ",regex)
+        # print("regex in test: ",regex)
         #obtener los tokens
         for x in range(len(regex)):
-            print(regex[x])
+            # print(regex[x])
             temporary_array = []
             temporary_word = ""
             token_active = False
@@ -104,9 +108,9 @@ class YalReader:
 
         token_regex.pop()
 
-        print("\ntoken_functios: ", token_functios)            
-        print("\ntoken_regex: ",token_regex)
-        print("++++++++++++++++++++++")
+        # print("\ntoken_functios: ", token_functios)            
+        # print("\ntoken_regex: ",token_regex)
+        # print("++++++++++++++++++++++")
                 
         #realizar limpieza de los datos de regex
         # print("brefore regex: ", regex)
@@ -114,13 +118,15 @@ class YalReader:
             temporary_word = ""
             for l in regex[x]:
                 temporary_word += l
+                # print("temporary_word: ", temporary_word)
                 if "{" in temporary_word:
                     temporary_word = temporary_word[:-1].strip()
                     break 
-                if "(*" in temporary_word:
-                    temporary_word = temporary_word[:-2].strip()
-                    break 
-            if temporary_word.count("'") == 2:
+                if "(*" in temporary_word :
+                    if temporary_word[0] == "(":
+                        temporary_word = temporary_word[:-2].strip()
+                        break 
+            if temporary_word.count("'") == 2 or temporary_word.count('"') == 2:
                 temporary_word = temporary_word[1:-1]
 
             regex[x] = temporary_word
@@ -378,19 +384,23 @@ class YalReader:
         #convertilos en axi solo aquellos que no forman parte de alguna funcion
 
         # print("===================================")
-        # print("funciones:")
+        # print("funciones:", filter_funciones)
         functionNames = []
         #obtener los nombres de las funciones
         for x in filter_funciones:
             functionNames.append(x[0])
             # print(x)
         functionNames.append('|')
+        # print("functionNames: ", functionNames)
         # print("filter_regex: ",filter_regex)
         for x in range(len(filter_regex)):
             if filter_regex[x] not in functionNames:
                 if len(filter_regex[x]) == 1:
                     # print("filter_regex[x]: ", filter_regex[x])
                     filter_regex[x] = ord(filter_regex[x])
+            if filter_regex[x] == "|" and filter_regex[x-1] == "|":
+                filter_regex[x] = ord(filter_regex[x])
+                
         
         # print("filter_regex: ",filter_regex)      
 
@@ -410,6 +420,7 @@ class YalReader:
         # print("temporalNewRegex: ",temporalNewRegex)
         filter_regex = temporalNewRegex        
         # print("\nregex: ", filter_regex)
+        # print("filter_funciones: ",filter_funciones)
 
         #comenzar a reemplazar la regex
         final_regex = []
@@ -459,11 +470,11 @@ class YalReader:
                     final_regex.extend(regex_temporal)
             #si la regex no existe en las funciones solo agregarlo
             if existe == False:
-                print("rege: ",rege)
+                # print("rege: ",rege)
                 if isinstance(rege, str):
                     if len(rege) > 1:
                         if '#' not in rege:
-                            print(rege)
+                            # print(rege)
                             temporal = []
                             temporal.append("(")
                             for i in rege:
@@ -471,7 +482,7 @@ class YalReader:
                                 temporal.append("•")
                             temporal.pop(len(temporal)-1)
                             temporal.append(")")
-                            print("temporal: ",temporal)
+                            # print("temporal: ",temporal)
                             final_regex.extend(temporal)
                         else:
                             final_regex.append(rege)
@@ -480,7 +491,7 @@ class YalReader:
                 else:
                     final_regex.append(rege)
             # print("=============================================")
-            print("final_regex: ",final_regex)
+            # print("final_regex: ",final_regex)
 
         # print("\nfinal regex: ", final_regex)
         return final_regex,token_functios

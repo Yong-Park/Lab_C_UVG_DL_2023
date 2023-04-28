@@ -4,7 +4,7 @@ let letter = ['A'-'Z''a'-'z']
 let str = (_)*
 let digit = ['0'-'9']
 let digits = digit+
-let word = letter(letter|str|digit)*
+let word = letter(letter|str|digit|.)*
 let number = digits(.digits)?('E'['+''-']?digits)?
 
 rule tokens =
