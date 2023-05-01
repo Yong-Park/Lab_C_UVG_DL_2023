@@ -14,6 +14,7 @@ class Simulation:
         text = ""
         position = self.start[0]
         for x in self.test:
+            # print(x)
             for l in x:
                 seguir = True
                 notExist = True
@@ -46,7 +47,6 @@ class Simulation:
                             text = ""
                             seguir = False
                         else:
-                            
                             indice = self.end.index(position)
                             self.result.append([self.tokens[indice].replace("#",""),text])
                             # print("result: ",self.result)

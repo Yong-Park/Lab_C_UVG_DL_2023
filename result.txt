@@ -1,242 +1,177 @@
-['(*', '(*']:14
-['ws', ' ']:10
-['word', 'Lexer']:24
-['ws', ' ']:10
-['word', 'para']:24
-['ws', ' ']:10
-['word', 'Gram']:24
-['error lexico', 'Ã']:Token desconocido: error lexico
-['error lexico', '¡']:Token desconocido: error lexico
-['word', 'tica']:24
-['ws', ' ']:10
-['word', 'No.']:24
-['ws', ' ']:10
-['digits', '1']:25
-['ws', ' ']:10
-['error lexico', '-']:Token desconocido: error lexico
-['ws', ' ']:10
-['word', 'Expresiones']:24
-['ws', ' ']:10
-['word', 'aritm']:24
-['error lexico', 'Ã']:Token desconocido: error lexico
-['error lexico', '©']:Token desconocido: error lexico
-['word', 'ticas']:24
-['ws', ' ']:10
-['word', 'simples']:24
-['ws', ' ']:10
-['word', 'para']:24
-['ws', ' ']:10
-['word', 'variables']:24
-['ws', ' ']:10
-['*)', '*)']:15
-['ws', '\n\n']:10
-['(*', '(*']:14
-['ws', ' ']:10
-['word', 'Introducir']:24
-['ws', ' ']:10
-['word', 'cualquier']:24
-['ws', ' ']:10
-['word', 'header']:24
-['ws', ' ']:10
-['word', 'aqui']:24
-['ws', ' ']:10
-['*)', '*)']:15
-['ws', '\n\n']:10
-['let', 'let']:16
-['ws', ' ']:10
-['word', 'delim']:24
-['ws', ' ']:10
-['=', '=']:17
-['ws', ' ']:10
-['error lexico', '[']:Token desconocido: error lexico
-['error lexico', "'"]:Token desconocido: error lexico
-['ws', ' ']:10
-['error lexico', "'"]:Token desconocido: error lexico
-['error lexico', "'"]:Token desconocido: error lexico
-['error lexico', '\\']:Token desconocido: error lexico
-['word', 't']:24
-['error lexico', "'"]:Token desconocido: error lexico
-['error lexico', "'"]:Token desconocido: error lexico
-['error lexico', '\\']:Token desconocido: error lexico
-['word', 'n']:24
-['error lexico', "'"]:Token desconocido: error lexico
-['error lexico', ']']:Token desconocido: error lexico
-['ws', ' \n']:10
-['let', 'let']:16
-['ws', ' ']:10
-['word', 'ws']:24
-['ws', ' ']:10
-['=', '=']:17
-['ws', ' ']:10
-['word', 'delim']:24
-['+', '+']:19
-['ws', '\n']:10
-['let', 'let']:16
-['ws', ' ']:10
-['word', 'letter']:24
-['ws', ' ']:10
-['=', '=']:17
-['ws', ' ']:10
-['error lexico', '[']:Token desconocido: error lexico
-['error lexico', "'"]:Token desconocido: error lexico
-['word', 'A']:24
-['error lexico', "'"]:Token desconocido: error lexico
-['error lexico', '-']:Token desconocido: error lexico
-['error lexico', "'"]:Token desconocido: error lexico
-['word', 'Z']:24
-['error lexico', "'"]:Token desconocido: error lexico
-['error lexico', "'"]:Token desconocido: error lexico
-['word', 'a']:24
-['error lexico', "'"]:Token desconocido: error lexico
-['error lexico', '-']:Token desconocido: error lexico
-['error lexico', "'"]:Token desconocido: error lexico
-['word', 'z']:24
-['error lexico', "'"]:Token desconocido: error lexico
-['error lexico', ']']:Token desconocido: error lexico
-['ws', '\n']:10
-['let', 'let']:16
-['ws', ' ']:10
-['word', 'digit']:24
-['ws', ' ']:10
-['=', '=']:17
-['ws', ' ']:10
-['error lexico', '[']:Token desconocido: error lexico
-['error lexico', "'"]:Token desconocido: error lexico
-['digits', '0']:25
-['error lexico', "'"]:Token desconocido: error lexico
-['error lexico', '-']:Token desconocido: error lexico
-['error lexico', "'"]:Token desconocido: error lexico
-['digits', '9']:25
-['error lexico', "'"]:Token desconocido: error lexico
-['error lexico', ']']:Token desconocido: error lexico
-['ws', '\n']:10
-['let', 'let']:16
-['ws', ' ']:10
-['word', 'id']:24
-['ws', ' ']:10
-['=', '=']:17
-['ws', ' ']:10
-['word', 'letter']:24
-['(', '(']:8
-['word', 'letter']:24
-['|', '|']:18
-['word', 'digit']:24
-[')', ')']:9
-['*', '*']:20
-['ws', '\n\n']:10
-['rule', 'rule']:22
-['ws', ' ']:10
-['tokens', 'tokens']:23
-['ws', ' ']:10
-['=', '=']:17
-['ws', ' \n    ']:10
-['word', 'ws']:24
-['ws', '     \n  ']:10
-['|', '|']:18
-['ws', ' ']:10
-['word', 'id']:24
-['ws', '        ']:10
-['error lexico', '{']:Token desconocido: error lexico
-['ws', ' ']:10
-['word', 'return']:24
-['ws', ' ']:10
-['word', 'ID']:24
-['ws', ' ']:10
-['error lexico', '}']:Token desconocido: error lexico
-['ws', '               ']:10
-['(*', '(*']:14
-['ws', ' ']:10
-['word', 'Cambie']:24
-['ws', ' ']:10
-['word', 'por']:24
-['ws', ' ']:10
-['word', 'una']:24
-['ws', ' ']:10
-['word', 'acci']:24
+['/*', '/*']:/*
+['ws', ' ']:empty
+['mayusword', 'C']:may
+['minusword', 'onfiguraci']:min
 ['error lexico', 'Ã']:Token desconocido: error lexico
 ['error lexico', '³']:Token desconocido: error lexico
-['word', 'n']:24
-['ws', ' ']:10
-['word', 'v']:24
+['minusword', 'n']:min
+['ws', ' ']:empty
+['minusword', 'del']:min
+['ws', ' ']:empty
+['minusword', 'parser']:min
+['ws', ' ']:empty
+['minusword', 'para']:min
+['ws', ' ']:empty
+['minusword', 'gram']:min
 ['error lexico', 'Ã']:Token desconocido: error lexico
 ['error lexico', '¡']:Token desconocido: error lexico
-['word', 'lida']:24
-['error lexico', ',']:Token desconocido: error lexico
-['ws', ' ']:10
-['word', 'que']:24
-['ws', ' ']:10
-['word', 'devuelva']:24
-['ws', ' ']:10
-['word', 'el']:24
-['ws', ' ']:10
-['word', 'token']:24
-['ws', ' ']:10
-['*)', '*)']:15
-['ws', '\n  ']:10
-['|', '|']:18
-['ws', ' ']:10
-['error lexico', "'"]:Token desconocido: error lexico
-['+', '+']:19
-['error lexico', "'"]:Token desconocido: error lexico
-['ws', '       ']:10
-['error lexico', '{']:Token desconocido: error lexico
-['ws', ' ']:10
-['word', 'return']:24
-['ws', ' ']:10
-['word', 'PLUS']:24
-['ws', ' ']:10
-['error lexico', '}']:Token desconocido: error lexico
-['ws', '\n  ']:10
-['|', '|']:18
-['ws', ' ']:10
-['error lexico', "'"]:Token desconocido: error lexico
-['*', '*']:20
-['error lexico', "'"]:Token desconocido: error lexico
-['ws', '       ']:10
-['error lexico', '{']:Token desconocido: error lexico
-['ws', ' ']:10
-['word', 'return']:24
-['ws', ' ']:10
-['word', 'TIMES']:24
-['ws', ' ']:10
-['error lexico', '}']:Token desconocido: error lexico
-['ws', '\n  ']:10
-['|', '|']:18
-['ws', ' ']:10
-['error lexico', "'"]:Token desconocido: error lexico
-['(', '(']:8
-['error lexico', "'"]:Token desconocido: error lexico
-['ws', '       ']:10
-['error lexico', '{']:Token desconocido: error lexico
-['ws', ' ']:10
-['word', 'return']:24
-['ws', ' ']:10
-['word', 'LPAREN']:24
-['ws', ' ']:10
-['error lexico', '}']:Token desconocido: error lexico
-['ws', '\n  ']:10
-['|', '|']:18
-['ws', ' ']:10
-['error lexico', "'"]:Token desconocido: error lexico
-[')', ')']:9
-['error lexico', "'"]:Token desconocido: error lexico
-['ws', '       ']:10
-['error lexico', '{']:Token desconocido: error lexico
-['ws', ' ']:10
-['word', 'return']:24
-['ws', ' ']:10
-['word', 'RPAREN']:24
-['ws', ' ']:10
-['error lexico', '}']:Token desconocido: error lexico
-['ws', '\n  \n']:10
-['(*', '(*']:14
-['ws', ' ']:10
-['word', 'Introducir']:24
-['ws', ' ']:10
-['word', 'cualquier']:24
-['ws', ' ']:10
-['word', 'trailer']:24
-['ws', ' ']:10
-['word', 'aqui']:24
-['ws', ' ']:10
-['*)', '*)']:15
+['minusword', 'tica']:min
+['ws', ' ']:empty
+['mayusword', 'N']:may
+['minusword', 'o']:min
+['error lexico', '.']:Token desconocido: error lexico
+['error lexico', '1']:Token desconocido: error lexico
+['ws', ' ']:empty
+['*/', '*/']:*/
+['ws', '\n']:empty
+['/*', '/*']:/*
+['ws', ' ']:empty
+['mayusword', 'S']:may
+['minusword', 'igue']:min
+['ws', ' ']:empty
+['minusword', 'la']:min
+['ws', ' ']:empty
+['minusword', 'gram']:min
+['error lexico', 'Ã']:Token desconocido: error lexico
+['error lexico', '¡']:Token desconocido: error lexico
+['minusword', 'tica']:min
+['ws', ' ']:empty
+['mayusword', 'SLR']:may
+[':', ':']::
+['ws', ' ']:empty
+['*/', '*/']:*/
+['ws', '\n']:empty
+['/*', '/*']:/*
+['ws', ' ']:empty
+['mayusword', 'E']:may
+['ws', ' ']:empty
+['error lexico', 'â']:Token desconocido: error lexico
+['error lexico', '†']:Token desconocido: error lexico
+['error lexico', '’']:Token desconocido: error lexico
+['ws', ' ']:empty
+['mayusword', 'E']:may
+['ws', ' ']:empty
+['error lexico', '+']:Token desconocido: error lexico
+['ws', ' ']:empty
+['mayusword', 'T']:may
+['ws', ' ']:empty
+['|', '|']:|
+['ws', ' ']:empty
+['mayusword', 'T']:may
+['ws', ' ']:empty
+['*/', '*/']:*/
+['ws', '\n']:empty
+['/*', '/*']:/*
+['ws', ' ']:empty
+['mayusword', 'T']:may
+['ws', ' ']:empty
+['error lexico', 'â']:Token desconocido: error lexico
+['error lexico', '†']:Token desconocido: error lexico
+['error lexico', '’']:Token desconocido: error lexico
+['ws', ' ']:empty
+['mayusword', 'T']:may
+['ws', ' ']:empty
+['error lexico', 'â']:Token desconocido: error lexico
+['error lexico', 'ˆ']:Token desconocido: error lexico
+['error lexico', '—']:Token desconocido: error lexico
+['ws', ' ']:empty
+['mayusword', 'F']:may
+['ws', ' ']:empty
+['|', '|']:|
+['ws', ' ']:empty
+['mayusword', 'F']:may
+['ws', ' ']:empty
+['*/', '*/']:*/
+['ws', '\n']:empty
+['/*', '/*']:/*
+['ws', ' ']:empty
+['mayusword', 'F']:may
+['ws', ' ']:empty
+['error lexico', 'â']:Token desconocido: error lexico
+['error lexico', '†']:Token desconocido: error lexico
+['error lexico', '’']:Token desconocido: error lexico
+['ws', ' ']:empty
+['error lexico', '(']:Token desconocido: error lexico
+['ws', ' ']:empty
+['mayusword', 'E']:may
+['ws', ' ']:empty
+['error lexico', ')']:Token desconocido: error lexico
+['ws', ' ']:empty
+['|', '|']:|
+['ws', ' ']:empty
+['minusword', 'id']:min
+['ws', ' ']:empty
+['*/', '*/']:*/
+['ws', '\n\n']:empty
+['%token', '%token']:%token
+['ws', ' ']:empty
+['mayusword', 'ID']:may
+['ws', '\n']:empty
+['%token', '%token']:%token
+['ws', ' ']:empty
+['mayusword', 'PLUS']:may
+['ws', '\n']:empty
+['%token', '%token']:%token
+['ws', ' ']:empty
+['mayusword', 'TIMES']:may
+['ws', '\n']:empty
+['%token', '%token']:%token
+['ws', ' ']:empty
+['mayusword', 'LPAREN']:may
+['ws', ' ']:empty
+['mayusword', 'RPAREN']:may
+['ws', '\n']:empty
+['%token', '%token']:%token
+['ws', ' ']:empty
+['mayusword', 'WS']:may
+['ws', '\n']:empty
+['IGNORE', 'IGNORE']:IGNORE
+['ws', ' ']:empty
+['mayusword', 'WS']:may
+['ws', '\n\n']:empty
+['%%', '%%']:%%
+['ws', '\n\n']:empty
+['minusword', 'expression']:min
+[':', ':']::
+['ws', '\n    ']:empty
+['minusword', 'expression']:min
+['ws', ' ']:empty
+['mayusword', 'PLUS']:may
+['ws', ' ']:empty
+['minusword', 'term']:min
+['ws', '\n  ']:empty
+['|', '|']:|
+['ws', ' ']:empty
+['minusword', 'term']:min
+['ws', '\n']:empty
+[';', ';']:;
+['ws', '\n']:empty
+['minusword', 'term']:min
+[':', ':']::
+['ws', '\n    ']:empty
+['minusword', 'term']:min
+['ws', ' ']:empty
+['mayusword', 'TIMES']:may
+['ws', ' ']:empty
+['minusword', 'factor']:min
+['ws', '\n  ']:empty
+['|', '|']:|
+['ws', ' ']:empty
+['minusword', 'factor']:min
+['ws', '\n']:empty
+[';', ';']:;
+['ws', '\n']:empty
+['minusword', 'factor']:min
+[':', ':']::
+['ws', '\n    ']:empty
+['mayusword', 'LPAREN']:may
+['ws', ' ']:empty
+['minusword', 'expression']:min
+['ws', ' ']:empty
+['mayusword', 'RPAREN']:may
+['ws', '\n  ']:empty
+['|', '|']:|
+['ws', ' ']:empty
+['mayusword', 'ID']:may
+['ws', '\n']:empty
+[';', ';']:;

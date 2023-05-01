@@ -6,34 +6,19 @@ def scan(token):
             return WHITESPACE
          except NameError:
             return f'Token desconocido: {token}'
-    if token == '(':
-         try:
-            return LPAREN
-         except NameError:
-            return f'Token desconocido: {token}'
-    if token == ')':
-         try:
-            return RPAREN
-         except NameError:
-            return f'Token desconocido: {token}'
-    if token == '(*':
+    if token == '/*':
          try:
             return LEFTCOMMENT
          except NameError:
             return f'Token desconocido: {token}'
-    if token == '*)':
+    if token == '*/':
          try:
             return RIGHTCOMMENT
          except NameError:
             return f'Token desconocido: {token}'
-    if token == 'let':
+    if token == '%token':
          try:
-            return LET
-         except NameError:
-            return f'Token desconocido: {token}'
-    if token == '=':
-         try:
-            return EQ
+            return TOKEN
          except NameError:
             return f'Token desconocido: {token}'
     if token == '|':
@@ -41,39 +26,39 @@ def scan(token):
             return OR
          except NameError:
             return f'Token desconocido: {token}'
-    if token == '+':
+    if token == 'IGNORE':
          try:
-            return POSITIVE
+            return IGNORE
          except NameError:
             return f'Token desconocido: {token}'
-    if token == '*':
+    if token == 'minusword':
          try:
-            return KLEENE
+            return WORDMIN
          except NameError:
             return f'Token desconocido: {token}'
-    if token == '?':
+    if token == 'mayusword':
          try:
-            return NULLABLE
+            return WORDMAY
          except NameError:
             return f'Token desconocido: {token}'
-    if token == 'rule':
+    if token == '%%':
          try:
-            return RULE
+            return SPLIT
          except NameError:
             return f'Token desconocido: {token}'
-    if token == 'tokens':
+    if token == ':':
          try:
-            return TOKENS
+            return TWOPOINTS
          except NameError:
             return f'Token desconocido: {token}'
-    if token == 'word':
+    if token == ';':
          try:
-            return WORD
+            return FINISHDECLARATION
          except NameError:
             return f'Token desconocido: {token}'
-    if token == 'digits':
+    if token == '/':
          try:
-            return DIGITS
+            return DIVIDER
          except NameError:
             return f'Token desconocido: {token}'
     return f'Token desconocido: {token}'
