@@ -6,6 +6,7 @@ class YalpReader:
         self.tokenCopy = []
         self.tokens = []
         self.productions = []
+        self.conjuntos = []
         # nombre del archivo que se abrira
         reader = YalReader(file)
         _,token_functions = reader.analize()
@@ -99,6 +100,35 @@ class YalpReader:
     def subsetConstruction(self):
         #crear el inicial
         value = self.productions[0][0]
-        self.productions.insert(0, [value, [value+"'"]]) 
-        print("self.productions: ",self.productions)
+        self.productions.insert(0, [value+"'", [value]]) 
         
+        #agregar . para todos en el inicio para el trabajo
+        for x in self.productions:
+            x[1].insert(0,".")
+        
+        print("self.productions: ",self.productions)
+        self.clousure(self.productions[0])
+        
+    def clousure(self, item):
+        closure_Array = []
+        closure_Array.append(item)
+        # print("closure_Array: ",closure_Array)
+        #comenzar a buscar
+        largo = 0
+        while largo != len(closure_Array):
+            largo = len(closure_Array)
+            for x in closure_Array:
+                print(x)
+                indice = x[1].index(".")
+                # print(indice)
+                # print(len(x[1])-1)
+                if indice + 1 <= len(x[1])-1:
+                    indice += 1
+                    val= x[1][indice]
+                    #buscar todos aquellos que comienzen con el val
+                    for y in self.productions:
+                        if y[0] == val and y not in closure_Array:
+                            closure_Array.append(y)
+        sorted_items = sorted(closure_Array, key=lambda x: x[0])
+        print("closure_Array: ",sorted_items)
+                    
