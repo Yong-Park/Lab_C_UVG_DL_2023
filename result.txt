@@ -51,7 +51,7 @@
 ['ws', ' ']:empty
 ['mayusword', 'E']:may
 ['ws', ' ']:empty
-['error lexico', '+']:Token desconocido: error lexico
+['characters', '+']:NOTIMPORTANT
 ['ws', ' ']:empty
 ['mayusword', 'T']:may
 ['ws', ' ']:empty

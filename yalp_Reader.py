@@ -7,6 +7,8 @@ class YalpReader:
         self.tokens = []
         self.productions = []
         self.conjuntos = []
+        self.ciclo = []
+        self.transiciones = []
         # nombre del archivo que se abrira
         reader = YalReader(file)
         _,token_functions = reader.analize()
@@ -109,6 +111,12 @@ class YalpReader:
         print("self.productions: ",self.productions)
         self.clousure(self.productions[0])
         
+        #seguir mientras hayan datos
+        while len(self.ciclo) > 0:
+            print("self.ciclo: ",self.ciclo)
+            self.goto(self.ciclo.pop(0))
+                
+        
     def clousure(self, item):
         closure_Array = []
         closure_Array.append(item)
@@ -118,17 +126,54 @@ class YalpReader:
         while largo != len(closure_Array):
             largo = len(closure_Array)
             for x in closure_Array:
-                print(x)
+                # print(x)
                 indice = x[1].index(".")
                 # print(indice)
                 # print(len(x[1])-1)
-                if indice + 1 <= len(x[1])-1:
+                if indice + 1 < len(x[1]):
                     indice += 1
                     val= x[1][indice]
                     #buscar todos aquellos que comienzen con el val
                     for y in self.productions:
                         if y[0] == val and y not in closure_Array:
                             closure_Array.append(y)
+        # print("closure_Array: ",closure_Array)
         sorted_items = sorted(closure_Array, key=lambda x: x[0])
         print("closure_Array: ",sorted_items)
+        if sorted_items not in self.conjuntos:
+            self.conjuntos.append(sorted_items)
+            self.ciclo.append(sorted_items)
+            
+        # print("self.conjuntos: ", self.conjuntos)
+        
+    def goto(self,sorted_items):
+        #obtener los token o elementos con el cual probar
+        elements = []
+        for x in sorted_items:
+            indice = x[1].index(".")
+            if indice + 1 <= len(x[1]):
+                if x[1][indice+1] not in elements: 
+                    elements.append(x[1][indice+1])
+        print("elements: ", elements)
+        
+        #encontrar todos los que son .elements y apartir de esos mover el . una casilla 
+        for x in elements:
+            print("x: ", x)
+            temporal = []
+            for y in sorted_items:
+                indice = y[1].index(".")
+                if indice + 1 < len(y[1]):
+                    # print("y[1]: ", y[1])
+                    if y[1][indice+1] == x: 
+                        temporal.append(y)
+            #mover el . una casilla a la derecha
+            for z in temporal:
+                indice = z[1].index(".")
+                if indice + 1 < len(z[1]):
+                    a = z[1][indice]
+                    b = z[1][indice+1]
+                    z[1][indice] = b
+                    z[1][indice+1]=a
+            print("temporal: ",temporal)
+        
                     

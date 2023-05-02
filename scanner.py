@@ -6,6 +6,11 @@ def scan(token):
             return WHITESPACE
          except NameError:
             return f'Token desconocido: {token}'
+    if token == 'characters':
+         try:
+            return CHARACTERS
+         except NameError:
+            return f'Token desconocido: {token}'
     if token == '/*':
          try:
             return LEFTCOMMENT
@@ -54,11 +59,6 @@ def scan(token):
     if token == ';':
          try:
             return FINISHDECLARATION
-         except NameError:
-            return f'Token desconocido: {token}'
-    if token == '/':
-         try:
-            return DIVIDER
          except NameError:
             return f'Token desconocido: {token}'
     return f'Token desconocido: {token}'

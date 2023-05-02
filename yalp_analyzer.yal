@@ -1,4 +1,5 @@
 let delim = [' ''\t''\n']
+let characters = ['+''*''-''/']
 let ws = delim+
 let letterMayus = ['A'-'Z']
 let letterMinus = ['a'-'z']
@@ -8,6 +9,7 @@ let mayusword = letterMayus*
 
 rule tokens =
     ws        { return WHITESPACE }
+  | characters { return CHARACTERS }
   | "/*"      { return LEFTCOMMENT }
   | "*/"      { return RIGHTCOMMENT }
   | "%token"  { return TOKEN }
@@ -18,5 +20,4 @@ rule tokens =
   | "%%"      { return SPLIT }  
   | ":"       { return TWOPOINTS }
   | ";"       { return FINISHDECLARATION }
-  | "/"       { return DIVIDER }
   

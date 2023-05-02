@@ -55,6 +55,7 @@ direct= afd.Dstate()
 # afd.DirectGraph(direct[0],direct[1])
 
 test = "slr-1.yalp"
+file = "slr-1.yal"
 with open(test) as f:
     testLines = f.readlines()
 
@@ -72,7 +73,6 @@ with open("result.txt", "w") as archivo:
 
 #comenzar a armar el yalp
 from yalp_Reader import *
-file = "slr-1.yal"
 yalp = YalpReader(simulacion, file)
 yalp.startConstruct()
 yalp.subsetConstruction()
