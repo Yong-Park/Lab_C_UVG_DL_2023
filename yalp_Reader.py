@@ -108,19 +108,20 @@ class YalpReader:
         for x in self.productions:
             x[1].insert(0,".")
         
+        #initial construct
         print("self.productions: ",self.productions)
-        self.clousure(self.productions[0])
-        
+        self.clousure([self.productions[0]])
         #seguir mientras hayan datos
         while len(self.ciclo) > 0:
             print("self.ciclo: ",self.ciclo)
-            self.goto(self.ciclo.pop(0))
-                
+            self.goto(self.ciclo.pop(0))          
         
     def clousure(self, item):
+        # print("item: ",item)
         closure_Array = []
-        closure_Array.append(item)
+        closure_Array.extend(item)
         # print("closure_Array: ",closure_Array)
+        # print("self.productions: ",self.productions)
         #comenzar a buscar
         largo = 0
         while largo != len(closure_Array):
@@ -148,6 +149,7 @@ class YalpReader:
         
     def goto(self,sorted_items):
         #obtener los token o elementos con el cual probar
+        print("sorted_items: ",sorted_items)
         elements = []
         for x in sorted_items:
             indice = x[1].index(".")
@@ -166,7 +168,8 @@ class YalpReader:
                     # print("y[1]: ", y[1])
                     if y[1][indice+1] == x: 
                         temporal.append(y)
-            #mover el . una casilla a la derecha
+            print("temporal antes de mover el .: ", temporal)
+            #mover el . una casilla a la derech
             for z in temporal:
                 indice = z[1].index(".")
                 if indice + 1 < len(z[1]):
@@ -175,5 +178,9 @@ class YalpReader:
                     z[1][indice] = b
                     z[1][indice+1]=a
             print("temporal: ",temporal)
+            #envairlo al closure
+            self.clousure(temporal)
+            break
+            
         
                     
