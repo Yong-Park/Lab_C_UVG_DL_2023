@@ -168,6 +168,8 @@ class YalpReader:
                     # print("y[1]: ", y[1])
                     if y[1][indice+1] == x: 
                         temporal.append(y)
+            print("self.conjuntos antes de mover el .:", self.conjuntos)
+            print("self.productions antes de mover el .: ",self.productions)
             print("temporal antes de mover el .: ", temporal)
             #mover el . una casilla a la derech
             for z in temporal:
@@ -177,10 +179,12 @@ class YalpReader:
                     b = z[1][indice+1]
                     z[1][indice] = b
                     z[1][indice+1]=a
+            print("self.conjuntos: ", self.conjuntos)
+            print("self.productions: ",self.productions)
             print("temporal: ",temporal)
             #envairlo al closure
             self.clousure(temporal)
-            break
+            input()
             
         
                     
