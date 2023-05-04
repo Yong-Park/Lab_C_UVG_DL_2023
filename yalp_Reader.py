@@ -3,13 +3,15 @@ import copy
 
 class YalpReader:
     def __init__(self, simulation, file):
+        self.number = 0
         self.simulation = simulation
         self.tokenCopy = []
         self.tokens = []
         self.productions = [] #en este se guardara la producion principal para que se pueda utlizar en el closure
         self.conjuntos = [] #en este se guardaran todos los posible conjuntos que se pueden llegar a armar
+        self.conjuntos_number = [] # en este se guardaran el numero que pertenecen cada conjunto
         self.ciclo = [] #tendra lo de conjuntos pero sirve para utilizarlo en el ciclo para encontrar nuevos y sus transiciones respectivas
-        self.transiciones = []
+        self.transiciones = [] #en este tendra la transicion correspondiente de cada conjunto
         # nombre del archivo que se abrira
         reader = YalReader(file)
         _,token_functions = reader.analize()
@@ -28,7 +30,6 @@ class YalpReader:
         temporal = []
         expresion = True
         functionName = ""
-        reglas = False
         # print("simulation: ", self.simulation)
         for x in self.simulation:
             if x[0] == "/*":
@@ -96,9 +97,9 @@ class YalpReader:
                         indice = self.tokenCopy.index(z)
                         x[1][y] = self.tokens[indice]
         
-        print("self.tokenCopy: ", self.tokenCopy)
-        print("tokens: ", self.tokens)
-        print("self.productions: ",self.productions)
+        # print("self.tokenCopy: ", self.tokenCopy)
+        # print("tokens: ", self.tokens)
+        # print("self.productions: ",self.productions)
         
     def subsetConstruction(self):
         #crear el inicial
@@ -114,15 +115,27 @@ class YalpReader:
         self.clousure([self.productions[0]])
         #seguir mientras hayan datos
         while len(self.ciclo) > 0:
-            print("===============")
-            for y in self.conjuntos:
-                print("self.conjuntos: ",y)
-            print()
-            # for x in self.ciclo:
-            #     print("self.ciclo: ",x)
-            self.goto(self.ciclo.pop(0))          
+            self.goto(self.ciclo.pop(0))
+            
+        # print(len(self.transiciones))
         
-    def clousure(self, item):
+        #una vez terminada agregar tambien la transicion de aceptaion
+        initial_state = self.productions[0][0] #estado que debe de buscar para el accept
+        for x in self.conjuntos:
+            # print("x: ", x)
+            for y in x:
+                # print(y)
+                accept_index = y[1].index(".")
+                if accept_index - 1 >= 0:
+                    if y[0] == initial_state and y[1][accept_index-1] == initial_state[:-1]:
+                        final_index = self.conjuntos.index(x)
+                        self.transiciones.append([self.conjuntos_number[final_index],"$","accept"])
+                        # print(x)
+        for y in range(len(self.conjuntos)):
+                print(f"{self.conjuntos_number[y]}: {self.conjuntos[y]}\n")
+        print("self.transiciones: ",self.transiciones)
+        
+    def clousure(self, item, elem = None, cicle= None):
         # print("item: ",item)
         closure_Array = []
         closure_Array.extend(item)
@@ -146,27 +159,35 @@ class YalpReader:
                             closure_Array.append(y)
         # print("closure_Array: ",closure_Array)
         sorted_items = sorted(closure_Array, key=lambda x: x[0])
-        print("closure_Array: ",sorted_items)
+        # print("closure_Array: ",sorted_items)
+        
         if sorted_items not in self.conjuntos:
             self.conjuntos.append(sorted_items)
+            self.conjuntos_number.append(self.number)
+            self.number += 1
             self.ciclo.append(sorted_items)
+            
+        #agregar transiciones si elem y ciclo no son vacios
+        if elem != None and cicle != None:
+            start_index = self.conjuntos.index(cicle)
+            end_index = self.conjuntos.index(sorted_items)
+            self.transiciones.append([self.conjuntos_number[start_index],elem,self.conjuntos_number[end_index]])
             
         # print("self.conjuntos: ", self.conjuntos)
         
     def goto(self,ciclo):
         #obtener los token o elementos con el cual probar
-        print("sorted_items: ",ciclo)
+        # print("sorted_items: ",ciclo)
         elements = []
         for x in ciclo:
             indice = x[1].index(".")
             if indice + 1 < len(x[1]):
                 if x[1][indice+1] not in elements: 
                     elements.append(x[1][indice+1])
-        print("elements: ", elements)
-        
+        # print("elements: ", elements)
         #encontrar todos los que son .elements y apartir de esos mover el . una casilla 
         for x in elements:
-            print("x: ", x)
+            # print("x: ", x)
             temporal = []
             for y in ciclo:
                 indice = y[1].index(".")
@@ -177,7 +198,7 @@ class YalpReader:
             # print("self.conjuntos antes de mover el .:", self.conjuntos)
             # print("self.productions antes de mover el .: ",self.productions)
             # print("temporal antes de mover el .: ", temporal)
-            print()
+            # print()
             #mover el . una casilla a la derech
             for z in temporal:
                 indice = z[1].index(".")
@@ -190,8 +211,8 @@ class YalpReader:
             # print("self.productions: ",self.productions)
             # print("temporal: ",temporal)
             #envairlo al closure
-            self.clousure(temporal)
-            input()
+            self.clousure(temporal, x, ciclo)
+            # input()
             
         
                     
