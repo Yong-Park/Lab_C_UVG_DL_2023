@@ -8,6 +8,7 @@ class YalpReader:
         self.tokenCopy = []
         self.tokens = []
         self.productions = [] #en este se guardara la producion principal para que se pueda utlizar en el closure
+        self.productions_copy = []
         self.conjuntos = [] #en este se guardaran todos los posible conjuntos que se pueden llegar a armar
         self.conjuntos_number = [] # en este se guardaran el numero que pertenecen cada conjunto
         self.ciclo = [] #tendra lo de conjuntos pero sirve para utilizarlo en el ciclo para encontrar nuevos y sus transiciones respectivas
@@ -101,10 +102,12 @@ class YalpReader:
         # print("tokens: ", self.tokens)
         # print("self.productions: ",self.productions)
         
+        
     def subsetConstruction(self):
         #crear el inicial
         value = self.productions[0][0]
         self.productions.insert(0, [value+"'", [value]]) 
+        self.productions_copy = copy.deepcopy(self.productions)
         
         #agregar . para todos en el inicio para el trabajo
         for x in self.productions:

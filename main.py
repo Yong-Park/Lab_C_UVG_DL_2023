@@ -76,10 +76,11 @@ from yalp_Reader import *
 yalp = YalpReader(simulacion, file)
 yalp.startConstruct()
 yalp.subsetConstruction()
+# print("yalp.productions_copy: ",yalp.productions_copy)
 # print("conjuntos: ", yalp.conjuntos)
 # print("transiciones: ", yalp.transiciones)
 
 #comenzar a construir el slrparsing
 from slrParsing import *
-slr_parsing_table = SLRPARSING(yalp.transiciones, yalp.conjuntos, yalp.conjuntos_number)
+slr_parsing_table = SLRPARSING(yalp.transiciones, yalp.conjuntos, yalp.conjuntos_number, yalp.productions_copy)
 slr_parsing_table.constructTable()
