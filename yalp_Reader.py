@@ -131,9 +131,9 @@ class YalpReader:
                         final_index = self.conjuntos.index(x)
                         self.transiciones.append([self.conjuntos_number[final_index],"$","accept"])
                         # print(x)
-        for y in range(len(self.conjuntos)):
-                print(f"{self.conjuntos_number[y]}: {self.conjuntos[y]}\n")
-        print("self.transiciones: ",self.transiciones)
+        # for y in range(len(self.conjuntos)):
+        #         print(f"{self.conjuntos_number[y]}: {self.conjuntos[y]}\n")
+        # print("self.transiciones: ",self.transiciones)
         
     def clousure(self, item, elem = None, cicle= None):
         # print("item: ",item)
