@@ -1,4 +1,6 @@
 import copy
+import pandas as pd
+from tabulate import tabulate
 
 class SLRPARSING:
     def __init__(self, transitions, conjuntos, numbers, reglas):
@@ -23,17 +25,17 @@ class SLRPARSING:
                 if x[1] not in self.action_filas:
                     self.action_filas.append(x[1])
         self.action_filas.sort(reverse=True)
-        print("self.state: ", self.state)
-        print("self.action: ",self.action_filas)
-        print("self.goto: ",self.goto_filas)
-        for x in range(len(self.conjuntos)):
-            print(f"{x}:{self.conjuntos[x]}")
-        print("====================")
-        for x in range(len(self.reglas)):
-            print(f"{x}:{self.reglas[x]}")
-        ignorar = self.reglas[0][1][0]
-        print("====================")
-        # print("ignorar: ",ignorar)
+        # print("self.state: ", self.state)
+        # print("self.action_filas: ",self.action_filas)
+        # print("self.goto_filas: ",self.goto_filas)
+        # for x in range(len(self.conjuntos)):
+        #     print(f"{x}:{self.conjuntos[x]}")
+        # print("====================")
+        # for x in range(len(self.reglas)):
+        #     print(f"{x}:{self.reglas[x]}")
+        first = self.reglas[0][1][0]
+        # print("====================")
+        # print("first: ",first)
         #primero llenar el goto
         for x in self.state:    
             for y in self.goto_filas:
@@ -73,22 +75,86 @@ class SLRPARSING:
             if [inicial,agregar] not in self.first:
                 self.first.append([inicial,agregar])
                 
-        print("self.first: ",self.first)
-        print("====================")
-                            
-        #armar la action pero con el de follow o replace
+        # print("self.first: ",self.first)
+        # print("====================")
+        # print("self.reglas: ", self.reglas)
+        #armar la action pero con el de follow/replace
         for x in range(len(self.conjuntos)): #ubicacion, seria el primer parametro para el [x, ... ,...]
             for y in self.conjuntos[x]:
                 if y[1][len(y[1])-1] == ".":
                     indice = y[1].index(".")
-                    if y[1][indice-1] != ignorar:
+                    if y[1][indice-1] != first:
                         trans_copy = copy.deepcopy(y)
                         trans_copy[1].remove(".")
                         for z in range(len(self.reglas)): #donde poner, seria el ultimo del parametro para el [x, ..., z]
                             if self.reglas[z] == trans_copy:
-                                print(trans_copy)
-                                print(self.conjuntos[x])
-                                print()
-                    
+                                # print(self.conjuntos[x], x) # numero del state
+                                # print(trans_copy, z) # replace z seria este
+                                transaction = self.follow(trans_copy[0], first) #transaction sera el parametro [x,w,z]
+                                for w in transaction:
+                                    self.action.append([x,w,"r"+str(z)])
+                                # print()
+                                #enviar y obtener el follow del parametro
+                                
         print("self.goto: ", self.goto)
         print("self.action: ",self.action)
+        
+    def follow(self, state, accept_state):
+        accept_state += "'"
+        # print("accept_state: ",accept_state)
+        revisar = []
+        revisar.append(state)
+        largo = 0
+        #primero encontrar en si este forma parte de alguno otro
+        while (largo != len(revisar)):
+            largo = len(revisar)
+            for x in self.reglas:
+                if len(x[1]) == 1:
+                    if x[1][0] in revisar and x[0] not in revisar:
+                        revisar.append(x[0])
+        # print("revisar: ", revisar)
+        transactions = []
+        #obtener todos sus follow
+        for x in revisar:
+            for y in self.reglas:
+                if x in y[1]:
+                    indice = y[1].index(x)
+                    if indice + 1 < len(y[1]):
+                        transactions.append(y[1][indice+1])
+        #revisar si tiene el estado de aceptacion y en este caso agregar el $
+        if accept_state in revisar:
+            transactions.append("$")
+        
+        # print("transactions: ", transactions)
+        return transactions
+    
+    def draw_table(self):
+        # Create an empty DataFrame with the specified columns
+        columns = self.action_filas + self.goto_filas
+        df = pd.DataFrame(columns=columns)
+
+        # Fill the table with data from 'goto' and 'action'
+        for row, col, value in self.goto + self.action:
+            df.at[row, col] = value
+
+        # Fill NaN values with empty strings
+        df.fillna('', inplace=True)
+
+        # Set the index column name
+        df.index.name = 'state'
+
+        # Add custom headers
+        headers = ['ACTION'] * len(self.action_filas) + ['GOTO'] * len(self.goto_filas)
+        df.columns = pd.MultiIndex.from_tuples(zip(headers, df.columns))
+        
+        # Sort it by state
+        df.sort_index(inplace=True)
+
+        # Convert the DataFrame to a table using the 'tabulate' library
+        table = tabulate(df, headers='keys', tablefmt='grid', showindex=True)
+
+        # Display the table in the console
+        print(table)
+
+
+

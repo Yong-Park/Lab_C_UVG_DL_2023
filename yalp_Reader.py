@@ -1,5 +1,10 @@
 from yalReaderV2 import *
 import copy
+import graphviz
+import os
+import networkx as nx
+os.environ["PATH"] += os.pathsep + 'D:/Program Files (x86)/Graphviz2.38/bin/'
+
 
 class YalpReader:
     def __init__(self, simulation, file):
@@ -216,6 +221,44 @@ class YalpReader:
             #envairlo al closure
             self.clousure(temporal, x, ciclo)
             # input()
+            
+    def create_graph(self):
+        G = nx.DiGraph()
+
+        # Add nodes for each array
+        for i, arr in enumerate(self.conjuntos):
+            label = f"I{i}\n{str(arr)}"
+            G.add_node(i, label=label)
+
+        # Add edges for each transition
+        for t in self.transiciones:
+            from_node, label, to_node = t
+            G.add_edge(from_node, to_node, label=label)
+            
+        # Add the missing "label" attribute for the nodes
+        for node in G.nodes():
+            if 'label' not in G.nodes[node]:
+                G.nodes[node]['label'] = str(node)
+                
+        self.draw_graph_with_graphviz(G)
+    
+    def draw_graph_with_graphviz(self,G):
+        dot = graphviz.Digraph()
+
+        # Add nodes with array labels
+        for node, attrs in G.nodes(data=True):
+            dot.node(str(node), label=str(attrs['label']).replace("'", "").replace('"', ''), fontsize="10", shape="rectangle")
+
+        # Add edges with transition labels
+        for source, target, attrs in G.edges(data=True):  # This line is modified
+            dot.edge(str(source), str(target), label=attrs['label'], fontsize="10")
+
+        # Render and display the graph
+        output_filename = "LR(0)"  # Specify your desired output filename here
+        dot.render(output_filename, view=True)
+
+
+        
             
         
                     
