@@ -227,7 +227,9 @@ class YalpReader:
 
         # Add nodes for each array
         for i, arr in enumerate(self.conjuntos):
-            label = f"I{i}\n{str(arr)}"
+            label = f"I{i}\n"
+            for item in arr:
+                label += str(item) + "\n"
             G.add_node(i, label=label)
 
         # Add edges for each transition
