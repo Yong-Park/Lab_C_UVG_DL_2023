@@ -91,11 +91,13 @@ class SLRPARSING:
                                 # print(self.conjuntos[x], x) # numero del state
                                 # print(trans_copy, z) # replace z seria este
                                 transaction = self.follow(trans_copy[0], first) #transaction sera el parametro [x,w,z]
+                                print("trans_copy[0]: ",trans_copy[0])
+                                print("transaction: ",transaction)
                                 for w in transaction:
                                     self.action.append([x,w,"r"+str(z)])
                                 # print()
                                 #enviar y obtener el follow del parametro
-                                
+        print("self.first: ", self.first)                     
         print("self.goto: ", self.goto)
         print("self.action: ",self.action)
         

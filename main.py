@@ -54,8 +54,8 @@ direct= afd.Dstate()
 # print(direct[1])
 # afd.DirectGraph(direct[0],direct[1])
 
-test = "slr-1.yalp"
-file = "slr-1.yal"
+test = "slr-4.yalp"
+file = "slr-4.yal"
 with open(test) as f:
     testLines = f.readlines()
 
