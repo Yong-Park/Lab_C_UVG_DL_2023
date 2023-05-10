@@ -7,6 +7,8 @@ class SLRPARSING:
         self.transitions = transitions
         self.conjuntos = conjuntos
         self.reglas = reglas
+        # print("self.reglas: ",self.reglas)
+        self.Noterminales = []
         
         self.state = numbers
         self.first = []
@@ -14,6 +16,10 @@ class SLRPARSING:
         self.action = []
         self.goto_filas = []
         self.goto = []
+        
+        for x in self.reglas:
+            if x[0] not in self.Noterminales:
+                self.Noterminales.append(x[0])
                 
     def constructTable(self):
         #primero divirlos por sus secciones correspondietes
@@ -67,6 +73,7 @@ class SLRPARSING:
                         if y == z[0]:
                             if z[1][0] not in visitados:
                                 visitados.append(z[1][0])
+            # print("visitados: ",visitados)
             #agarrar los terminales
             agregar = []
             for y in visitados:
@@ -74,14 +81,17 @@ class SLRPARSING:
                     agregar.append(y)
             if [inicial,agregar] not in self.first:
                 self.first.append([inicial,agregar])
-                
+        #     print("====================")
         # print("self.first: ",self.first)
         # print("====================")
         # print("self.reglas: ", self.reglas)
+        # print("self.conjuntos: ",self.conjuntos)
+        
         #armar la action pero con el de follow/replace
         for x in range(len(self.conjuntos)): #ubicacion, seria el primer parametro para el [x, ... ,...]
             for y in self.conjuntos[x]:
                 if y[1][len(y[1])-1] == ".":
+                    # print("y: ",y)
                     indice = y[1].index(".")
                     if y[1][indice-1] != first:
                         trans_copy = copy.deepcopy(y)
@@ -89,10 +99,11 @@ class SLRPARSING:
                         for z in range(len(self.reglas)): #donde poner, seria el ultimo del parametro para el [x, ..., z]
                             if self.reglas[z] == trans_copy:
                                 # print(self.conjuntos[x], x) # numero del state
-                                # print(trans_copy, z) # replace z seria este
+                                # print("\n",trans_copy) # replace z seria este
                                 transaction = self.follow(trans_copy[0], first) #transaction sera el parametro [x,w,z]
-                                print("trans_copy[0]: ",trans_copy[0])
-                                print("transaction: ",transaction)
+                                # print("trans_copy[0]: ",trans_copy[0])
+                                # print("transaction: ",transaction)
+                                # print("_______________________________________________")
                                 for w in transaction:
                                     self.action.append([x,w,"r"+str(z)])
                                 # print()
@@ -103,26 +114,58 @@ class SLRPARSING:
         
     def follow(self, state, accept_state):
         accept_state += "'"
+        # print("self.Noterminales ", self.Noterminales)
+        # print("state: ",state)
         # print("accept_state: ",accept_state)
+        # print("self.reglas: ",self.reglas)
         revisar = []
         revisar.append(state)
         largo = 0
+        transactions = []
         #primero encontrar en si este forma parte de alguno otro
         while (largo != len(revisar)):
             largo = len(revisar)
-            for x in self.reglas:
-                if len(x[1]) == 1:
-                    if x[1][0] in revisar and x[0] not in revisar:
-                        revisar.append(x[0])
-        # print("revisar: ", revisar)
-        transactions = []
+            for y in revisar:
+                for x in self.reglas:
+                    if y in x[1]:
+                        indiceNoterminal = x[1].index(y)
+                        # print("indiceNoterminal: ",indiceNoterminal)
+                        # print("x: ", x)
+                        #revisar si es terminal
+                        if indiceNoterminal == len(x[1])-1:
+                            # print("============")
+                            # print(indiceNoterminal)
+                            # print(len(x[1])-1)
+                            if x[0] not in revisar:
+                                revisar.append(x[0]) 
+                            
+                        #revisar si no es terminal y la siguiente de el es no terminal tambien
+                        else:
+                            #agregar el first del siguiente
+                            if indiceNoterminal + 1 < len(x[1]):
+                                if x[1][indiceNoterminal+1] in self.Noterminales:
+                                    for z in self.first:
+                                        if z[0] == x[1][indiceNoterminal+1]:
+                                            for w in z[1]:
+                                                if w not in transactions:
+                                                    transactions.append(w)
+                        
+                        # if x[1][0] in revisar and x[0] not in revisar:
+                        #     revisar.append(x[0])
+                #         print("transactions: ",transactions)
+                #         print("revisar: ", revisar)
+                # input()
+        # print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
         #obtener todos sus follow
+        # print("revisar: ",revisar)
+        # print("self.reglas: ",self.reglas)
         for x in revisar:
             for y in self.reglas:
                 if x in y[1]:
                     indice = y[1].index(x)
-                    if indice + 1 < len(y[1]):
-                        transactions.append(y[1][indice+1])
+                    if indice + 1 < len(y[1]) and y[1][indice+1] not in self.Noterminales:
+                        if y[1][indice+1] not in transactions:
+                            transactions.append(y[1][indice+1])
         #revisar si tiene el estado de aceptacion y en este caso agregar el $
         if accept_state in revisar:
             transactions.append("$")

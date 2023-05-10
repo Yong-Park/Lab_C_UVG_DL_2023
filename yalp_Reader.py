@@ -48,25 +48,31 @@ class YalpReader:
                 if divided:
                     if expresion:
                         if x[0] == "minusword":
+                            # print(x)
                             functionName = x[1][0].upper()
                             expresion = False
                     else:
+                        
                         if x[0] == "minusword":
+                            # print(x)
                             temporal.append(x[1][0].upper())
                         if x[0] == "mayusword":
+                            # print(x)
                             temporal.append(x[1])
                         if x[0] == "|":
+                            # print(x)
                             self.productions.append([functionName,temporal])
                             temporal = []
                         if x[0] == ";":
+                            # print(x)
                             if temporal:
                                 self.productions.append([functionName,temporal])
                                 temporal = []
                             expresion=True
-                        
+                    # print("self.productions: ",self.productions)
                     # print("producciones")
                     # print(x)
-                
+                    # print("============")
                 #lectura de los tokens
                 else:
                     if x[0] == "%token":
@@ -113,6 +119,7 @@ class YalpReader:
         value = self.productions[0][0]
         self.productions.insert(0, [value+"'", [value]]) 
         self.productions_copy = copy.deepcopy(self.productions)
+        # print("self.productions_copy: ",self.productions_copy)
         
         #agregar . para todos en el inicio para el trabajo
         for x in self.productions:
