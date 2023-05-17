@@ -196,10 +196,18 @@ class SLRPARSING:
         df.sort_index(inplace=True)
 
         # Convert the DataFrame to a table using the 'tabulate' library
-        table = tabulate(df, headers='keys', tablefmt='grid', showindex=True)
+        table = tabulate(df, headers='keys', tablefmt='fancy_grid', showindex=True)
 
         # Display the table in the console
         print(table)
 
-
-
+    # realizar simulacion
+    def simulate(self):
+        # print("self.action_filas: ",self.action_filas)
+        print("self.action: ", self.action)
+        # print("self.goto_filas: ",self.goto_filas)
+        print("self.goto: ", self.goto)
+        print("self.Noterminales: ",self.Noterminales)
+        print("self.reglas: ",self.reglas)
+        
+        pass

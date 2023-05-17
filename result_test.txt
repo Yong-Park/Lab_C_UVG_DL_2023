@@ -1,0 +1,5 @@
+['id', 'id']:Token desconocido: id
+['*', '*']:Token desconocido: *
+['id', 'id']:Token desconocido: id
+['+', '+']:Token desconocido: +
+['id', 'idaa']:Token desconocido: id
