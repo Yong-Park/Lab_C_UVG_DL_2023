@@ -151,4 +151,4 @@ from slrParsing import *
 slr_parsing_table = SLRPARSING(yalp.transiciones, yalp.conjuntos, yalp.conjuntos_number, yalp.productions_copy)
 slr_parsing_table.constructTable()
 slr_parsing_table.draw_table()
-slr_parsing_table.simulate()
+slr_parsing_table.simulate(test_token)

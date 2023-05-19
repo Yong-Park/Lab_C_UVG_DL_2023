@@ -202,12 +202,116 @@ class SLRPARSING:
         print(table)
 
     # realizar simulacion
-    def simulate(self):
-        # print("self.action_filas: ",self.action_filas)
-        print("self.action: ", self.action)
-        # print("self.goto_filas: ",self.goto_filas)
-        print("self.goto: ", self.goto)
-        print("self.Noterminales: ",self.Noterminales)
-        print("self.reglas: ",self.reglas)
+    def simulate(self, test_token):
+        stack_register = []
+        symbol_register = []
+        inputs_register = []
+        #elementos
+        stack = []
+        symbol = []
+        inputs = []
+        action = []
         
-        pass
+        #guardar em un array el input
+        for x in test_token:
+            inputs.append(x[0])
+        inputs.append("$")
+        # print("input: ",input)
+        # print("self.action_filas: ",self.action_filas)
+        # print("self.action: ", self.action)
+        # print("self.goto_filas: ",self.goto_filas)
+        # print("self.goto: ", self.goto)
+        # print("self.Noterminales: ",self.Noterminales)
+        # print("self.reglas: ",self.reglas)
+        symbol.append("$")
+        #comenzar la simulacion
+        #agregar el primer valor que seria el 0 al stack
+        stack.append(0)
+        verdad = True
+        completado = False
+        while(verdad):
+            stack_value = stack[len(stack)-1]
+            input_value = inputs[0]
+            
+            #guardar el registro
+            stack_register.append(copy.deepcopy(stack))
+            symbol_register.append(copy.deepcopy(symbol))
+            inputs_register.append(copy.deepcopy(inputs))
+            
+            # print("stack_value: ",stack_value)
+            # print("input_value: ",input_value)
+            for x in self.action:
+                if stack_value == x[0] and input_value == x[1]:
+                    # print("existe")
+                    verdad = True
+                    # print("x[2]: ",x[2])
+                    # print("len(x[2]): ",len(x[2]))
+                    #revisar si es shift o replace
+                    if x[2][0] == "s":
+                        stack.append(int(x[2][1:]))
+                        symbol.append(inputs.pop(0))
+                        action.append(f"shift to {x[2][1:]}")
+                    elif x[2][0] == "r":
+                        index = int(x[2][1:])
+                        cambio = self.reglas[index]
+                        action.append(f"reduced by {cambio[0]} -> {' '.join(cambio[1])}")
+                        stacks_elimnar = len(cambio[1])
+                        for _ in range(stacks_elimnar):
+                            stack.pop(len(stack)-1)
+                        temporal_symbol = cambio[1]
+                        indices_remplazar = []
+                        for y in cambio[1]:
+                            for z in range(len(symbol)):
+                                if y == symbol[z]:
+                                    indices_remplazar.append(z)
+                        
+                        if len(indices_remplazar) > 1:
+                            symbol[indices_remplazar[0]:indices_remplazar[len(indices_remplazar)-1]+1] = cambio[0]
+                        else:
+                            symbol[indices_remplazar[0]] = cambio[0]
+                            
+                        stack_value = stack[len(stack)-1]
+                        # print("stack_value: ",stack_value)
+                        # print("cambio[0]: ",cambio[0])
+                        for w in self.goto:
+                            # print("w: ",w)
+                            if w[0] == stack_value and w[1] == cambio[0]:
+                                # print("si existe y es: ", w[2])
+                                stack.append(int(w[2]))
+                    elif x[2] == "acc":
+                        action.append("accept")
+                        completado = True
+                        verdad = False
+                    break
+                else:
+                    verdad = False
+ 
+            # input()
+            # print("======================")
+            # print(f"stack: {stack}")
+            # print(f"symbol: {symbol}")
+            # print(f"inputs: {inputs}")
+            # print(f"action: {action}")
+            # print("======================")
+            
+        if completado == True:
+            print("Accepted")
+        else:
+            print("Not accepted")
+                        
+        data = {'Stack': stack_register, 'Symbol': symbol_register, 'Inputs': inputs_register, 'Action': action}
+        df = pd.DataFrame(data)
+        df.index.name = 'Line'
+
+        # Convert the DataFrame to a table using the 'tabulate' library
+        table = tabulate(df, headers='keys', tablefmt='fancy_grid', showindex=True)
+
+        # Display the table in the console
+        print(table)
+
+
+        # print(f"stack: {stack_register}")
+        # print(f"symbol: {symbol_register}")
+        # print(f"inputs: {inputs_register}")
+        # print(f"action: {action}")
+                        
