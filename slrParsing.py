@@ -258,12 +258,15 @@ class SLRPARSING:
                         stacks_elimnar = len(cambio[1])
                         for _ in range(stacks_elimnar):
                             stack.pop(len(stack)-1)
-                        temporal_symbol = cambio[1]
                         indices_remplazar = []
+                        # print("==========")
+                        # print(cambio[1])
+                        # print(symbol)
                         for y in cambio[1]:
-                            for z in range(len(symbol)):
+                            for z in range(len(symbol)-1,-1,-1):
                                 if y == symbol[z]:
                                     indices_remplazar.append(z)
+                                    break
                         
                         if len(indices_remplazar) > 1:
                             symbol[indices_remplazar[0]:indices_remplazar[len(indices_remplazar)-1]+1] = cambio[0]
@@ -294,6 +297,14 @@ class SLRPARSING:
             # print(f"action: {action}")
             # print("======================")
             
+        # print(f"stack: {stack_register}")
+        # print(f"symbol: {symbol_register}")
+        # print(f"inputs: {inputs_register}")
+        # print(f"action: {action}")
+        
+        if len(action) != len(stack_register):
+            action.append("Error")
+            
         if completado == True:
             print("Accepted")
         else:
@@ -310,8 +321,5 @@ class SLRPARSING:
         print(table)
 
 
-        # print(f"stack: {stack_register}")
-        # print(f"symbol: {symbol_register}")
-        # print(f"inputs: {inputs_register}")
-        # print(f"action: {action}")
+        
                         
