@@ -136,6 +136,7 @@ class SLRPARSING:
                             # print("============")
                             # print(indiceNoterminal)
                             # print(len(x[1])-1)
+                            # print("x[0]: ", x[0])
                             if x[0] not in revisar:
                                 revisar.append(x[0]) 
                             
@@ -147,8 +148,12 @@ class SLRPARSING:
                                     for z in self.first:
                                         if z[0] == x[1][indiceNoterminal+1]:
                                             for w in z[1]:
-                                                if w not in transactions:
+                                                if w not in transactions and w != "ε":
                                                     transactions.append(w)
+                                                else:
+                                                    if x[0] not in revisar:
+                                                        revisar.append(x[0])
+
                         
                         # if x[1][0] in revisar and x[0] not in revisar:
                         #     revisar.append(x[0])
