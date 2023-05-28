@@ -7,7 +7,7 @@ from simulation import *
 
 # nombre del archivo que se abrira
 # este sera para la lectura del yal respectivo y obtener los tokens al leer su archivo correspondiente
-filename = 'slr-4.yal'
+filename = 'Test/slr-3.yal'
 reader = YalReader(filename)
 regex,token_functions = reader.analize()
 # Abrir el archivo scanner.py para escribir en él
@@ -118,8 +118,8 @@ direct= afd.Dstate()
 # print(direct[1])
 # afd.DirectGraph(direct[0],direct[1])
 
-test = "slr-4.yalp"
-file = "slr-4.yal"
+test = "Test/slr-3.yalp"
+file = "Test/slr-3.yal"
 with open(test) as f:
     testLines = f.readlines()
 

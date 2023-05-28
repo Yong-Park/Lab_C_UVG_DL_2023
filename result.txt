@@ -21,7 +21,7 @@
 ['mayusword', 'N']:Token desconocido: mayusword
 ['minusword', 'o']:Token desconocido: minusword
 ['error lexico', '.']:Token desconocido: error lexico
-['error lexico', '4']:Token desconocido: error lexico
+['error lexico', '3']:Token desconocido: error lexico
 ['ws', ' ']:empty
 ['*/', '*/']:Token desconocido: */
 ['ws', '\n']:empty
@@ -44,365 +44,55 @@
 ['ws', '\n']:empty
 ['/*', '/*']:Token desconocido: /*
 ['ws', ' ']:empty
-['mayusword', 'P']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['mayusword', 'T']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'T']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['mayusword', 'M']:Token desconocido: mayusword
-['ws', ' ']:empty
-['mayusword', 'Q']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'T']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['mayusword', 'M']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'Q']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-[';', ';']:Token desconocido: ;
-['ws', ' ']:empty
-['mayusword', 'M']:Token desconocido: mayusword
-['ws', ' ']:empty
-['mayusword', 'Q']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'Q']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-[';', ';']:Token desconocido: ;
-['ws', ' ']:empty
-['mayusword', 'M']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'M']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['mayusword', 'A']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'A']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['minusword', 'id']:Token desconocido: minusword
-['ws', ' ']:empty
-['minusword', 'assignop']:Token desconocido: minusword
-['ws', ' ']:empty
 ['mayusword', 'E']:Token desconocido: mayusword
 ['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
+['error lexico', 'â']:Token desconocido: error lexico
+['error lexico', '†']:Token desconocido: error lexico
+['error lexico', '’']:Token desconocido: error lexico
 ['ws', ' ']:empty
-['mayusword', 'E']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['mayusword', 'X']:Token desconocido: mayusword
-['ws', ' ']:empty
-['mayusword', 'Z']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'E']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['mayusword', 'X']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'Z']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['error lexico', '<']:Token desconocido: error lexico
-['ws', ' ']:empty
-['mayusword', 'X']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'Z']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['minusword', 'eq']:Token desconocido: minusword
-['ws', ' ']:empty
-['mayusword', 'X']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'X']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['mayusword', 'R']:Token desconocido: mayusword
-['ws', ' ']:empty
-['mayusword', 'W']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'X']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['mayusword', 'R']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'W']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['mayusword', 'Y']:Token desconocido: mayusword
-['ws', ' ']:empty
-['mayusword', 'W']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'W']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['mayusword', 'Y']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'Y']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
+['mayusword', 'T']:Token desconocido: mayusword
 ['ws', ' ']:empty
 ['characters', '+']:Token desconocido: characters
 ['ws', ' ']:empty
-['mayusword', 'R']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'Y']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['ws', ' ']:empty
-['mayusword', 'R']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'R']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['mayusword', 'F']:Token desconocido: mayusword
-['ws', ' ']:empty
-['mayusword', 'V']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'R']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['mayusword', 'F']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'V']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['mayusword', 'J']:Token desconocido: mayusword
-['ws', ' ']:empty
-['mayusword', 'V']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'V']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['mayusword', 'J']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'J']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['characters', '*']:Token desconocido: characters
-['ws', ' ']:empty
-['mayusword', 'F']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'J']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['characters', '/']:Token desconocido: characters
-['ws', ' ']:empty
-['mayusword', 'F']:Token desconocido: mayusword
-['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
-['ws', ' ']:empty
-['mayusword', 'F']:Token desconocido: mayusword
-['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
-['ws', ' ']:empty
-['error lexico', '(']:Token desconocido: error lexico
 ['mayusword', 'E']:Token desconocido: mayusword
-['error lexico', ')']:Token desconocido: error lexico
+['ws', ' ']:empty
+['|', '|']:Token desconocido: |
+['ws', ' ']:empty
+['mayusword', 'T']:Token desconocido: mayusword
 ['ws', ' ']:empty
 ['*/', '*/']:Token desconocido: */
 ['ws', '\n']:empty
 ['/*', '/*']:Token desconocido: /*
 ['ws', ' ']:empty
-['mayusword', 'F']:Token desconocido: mayusword
+['mayusword', 'T']:Token desconocido: mayusword
 ['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
+['error lexico', 'â']:Token desconocido: error lexico
+['error lexico', '†']:Token desconocido: error lexico
+['error lexico', '’']:Token desconocido: error lexico
 ['ws', ' ']:empty
 ['minusword', 'number']:Token desconocido: minusword
 ['ws', ' ']:empty
-['*/', '*/']:Token desconocido: */
-['ws', '\n']:empty
-['/*', '/*']:Token desconocido: /*
+['characters', '*']:Token desconocido: characters
 ['ws', ' ']:empty
-['mayusword', 'F']:Token desconocido: mayusword
+['mayusword', 'T']:Token desconocido: mayusword
 ['ws', ' ']:empty
-['characters', '-']:Token desconocido: characters
-['error lexico', '>']:Token desconocido: error lexico
+['|', '|']:Token desconocido: |
 ['ws', ' ']:empty
-['minusword', 'id']:Token desconocido: minusword
+['minusword', 'number']:Token desconocido: minusword
+['ws', ' ']:empty
+['|', '|']:Token desconocido: |
+['ws', ' ']:empty
+['error lexico', '(']:Token desconocido: error lexico
+['ws', ' ']:empty
+['mayusword', 'E']:Token desconocido: mayusword
+['ws', ' ']:empty
+['error lexico', ')']:Token desconocido: error lexico
 ['ws', ' ']:empty
 ['*/', '*/']:Token desconocido: */
 ['ws', '\n\n']:empty
 ['%token', '%token']:Token desconocido: %token
 ['ws', ' ']:empty
-['mayusword', 'ID']:Token desconocido: mayusword
-['ws', '\n']:empty
-['%token', '%token']:Token desconocido: %token
-['ws', ' ']:empty
 ['mayusword', 'NUMBER']:Token desconocido: mayusword
-['ws', '\n']:empty
-['%token', '%token']:Token desconocido: %token
-['ws', ' ']:empty
-['mayusword', 'LPAREN']:Token desconocido: mayusword
-['ws', '\n']:empty
-['%token', '%token']:Token desconocido: %token
-['ws', ' ']:empty
-['mayusword', 'RPAREN']:Token desconocido: mayusword
-['ws', '\n']:empty
-['%token', '%token']:Token desconocido: %token
-['ws', ' ']:empty
-['mayusword', 'SEMICOLON']:Token desconocido: mayusword
-['ws', '\n']:empty
-['%token', '%token']:Token desconocido: %token
-['ws', ' ']:empty
-['mayusword', 'ASSIGNOP']:Token desconocido: mayusword
-['ws', '\n']:empty
-['%token', '%token']:Token desconocido: %token
-['ws', ' ']:empty
-['mayusword', 'LT']:Token desconocido: mayusword
-['ws', '\n']:empty
-['%token', '%token']:Token desconocido: %token
-['ws', ' ']:empty
-['mayusword', 'EQ']:Token desconocido: mayusword
-['ws', '\n']:empty
-['%token', '%token']:Token desconocido: %token
-['ws', ' ']:empty
-['mayusword', 'MINUS']:Token desconocido: mayusword
-['ws', '\n']:empty
-['%token', '%token']:Token desconocido: %token
-['ws', ' ']:empty
-['mayusword', 'DIV']:Token desconocido: mayusword
 ['ws', '\n']:empty
 ['%token', '%token']:Token desconocido: %token
 ['ws', ' ']:empty
@@ -411,182 +101,46 @@
 ['%token', '%token']:Token desconocido: %token
 ['ws', ' ']:empty
 ['mayusword', 'TIMES']:Token desconocido: mayusword
+['ws', '\n']:empty
+['%token', '%token']:Token desconocido: %token
+['ws', ' ']:empty
+['mayusword', 'LPAREN']:Token desconocido: mayusword
+['ws', ' ']:empty
+['mayusword', 'RPAREN']:Token desconocido: mayusword
+['ws', '\n\n']:empty
+['%token', '%token']:Token desconocido: %token
+['ws', ' ']:empty
+['mayusword', 'WHITESPACE']:Token desconocido: mayusword
+['ws', '\n']:empty
+['IGNORE', 'IGNORE']:Token desconocido: IGNORE
+['ws', ' ']:empty
+['mayusword', 'WHITESPACE']:Token desconocido: mayusword
 ['ws', '\n\n']:empty
 ['%%', '%%']:Token desconocido: %%
 ['ws', '\n\n']:empty
-['minusword', 'p']:Token desconocido: minusword
+['minusword', 'expression']:Token desconocido: minusword
 [':', ':']:Token desconocido: :
 ['ws', '\n    ']:empty
-['minusword', 't']:Token desconocido: minusword
-['ws', '\n']:empty
-[';', ';']:Token desconocido: ;
-['ws', '\n']:empty
-['minusword', 't']:Token desconocido: minusword
-[':', ':']:Token desconocido: :
-['ws', '\n    ']:empty
-['minusword', 'm']:Token desconocido: minusword
+['minusword', 'term']:Token desconocido: minusword
 ['ws', ' ']:empty
-['minusword', 'q']:Token desconocido: minusword
-['ws', '\n  ']:empty
-['|', '|']:Token desconocido: |
-['ws', ' ']:empty
-['minusword', 'm']:Token desconocido: minusword
-['ws', '\n']:empty
-[';', ';']:Token desconocido: ;
-['ws', '\n']:empty
-['minusword', 'q']:Token desconocido: minusword
-[':', ':']:Token desconocido: :
-['ws', '\n    ']:empty
-['mayusword', 'SEMICOLON']:Token desconocido: mayusword
-['ws', ' ']:empty
-['minusword', 'm']:Token desconocido: minusword
-['ws', ' ']:empty
-['minusword', 'q']:Token desconocido: minusword
-['ws', '\n  ']:empty
-['|', '|']:Token desconocido: |
-['ws', ' ']:empty
-['mayusword', 'SEMICOLON']:Token desconocido: mayusword
-['ws', ' ']:empty
-['minusword', 'm']:Token desconocido: minusword
-['ws', '\n']:empty
-[';', ';']:Token desconocido: ;
-['ws', '\n']:empty
-['minusword', 'm']:Token desconocido: minusword
-[':', ':']:Token desconocido: :
-['ws', '\n    ']:empty
-['minusword', 'a']:Token desconocido: minusword
-['ws', '\n']:empty
-[';', ';']:Token desconocido: ;
-['ws', '\n']:empty
-['minusword', 'a']:Token desconocido: minusword
-[':', ':']:Token desconocido: :
-['ws', '\n    ']:empty
-['mayusword', 'ID']:Token desconocido: mayusword
-['ws', ' ']:empty
-['mayusword', 'ASSIGNOP']:Token desconocido: mayusword
-['ws', ' ']:empty
-['minusword', 'e']:Token desconocido: minusword
-['ws', '\n']:empty
-[';', ';']:Token desconocido: ;
-['ws', '\n']:empty
-['minusword', 'e']:Token desconocido: minusword
-[':', ':']:Token desconocido: :
-['ws', '\n    ']:empty
-['minusword', 'x']:Token desconocido: minusword
-['ws', ' ']:empty
-['minusword', 'z']:Token desconocido: minusword
-['ws', '\n  ']:empty
-['|', '|']:Token desconocido: |
-['ws', ' ']:empty
-['minusword', 'x']:Token desconocido: minusword
-['ws', '\n']:empty
-[';', ';']:Token desconocido: ;
-['ws', '\n']:empty
-['minusword', 'z']:Token desconocido: minusword
-[':', ':']:Token desconocido: :
-['ws', '\n    ']:empty
-['mayusword', 'LT']:Token desconocido: mayusword
-['ws', ' ']:empty
-['minusword', 'x']:Token desconocido: minusword
-['ws', '\n  ']:empty
-['|', '|']:Token desconocido: |
-['ws', ' ']:empty
-['mayusword', 'EQ']:Token desconocido: mayusword
-['ws', ' ']:empty
-['minusword', 'x']:Token desconocido: minusword
-['ws', '\n']:empty
-[';', ';']:Token desconocido: ;
-['ws', '\n']:empty
-['minusword', 'x']:Token desconocido: minusword
-[':', ':']:Token desconocido: :
-['ws', '\n    ']:empty
-['minusword', 'r']:Token desconocido: minusword
-['ws', ' ']:empty
-['minusword', 'w']:Token desconocido: minusword
-['ws', '\n  ']:empty
-['|', '|']:Token desconocido: |
-['ws', ' ']:empty
-['minusword', 'r']:Token desconocido: minusword
-['ws', '\n']:empty
-[';', ';']:Token desconocido: ;
-['ws', '\n']:empty
-['minusword', 'w']:Token desconocido: minusword
-[':', ':']:Token desconocido: :
-['ws', '\n    ']:empty
-['minusword', 'y']:Token desconocido: minusword
-['ws', ' ']:empty
-['minusword', 'w']:Token desconocido: minusword
-['ws', '\n  ']:empty
-['|', '|']:Token desconocido: |
-['ws', ' ']:empty
-['minusword', 'y']:Token desconocido: minusword
-['ws', '\n']:empty
-[';', ';']:Token desconocido: ;
-['ws', '\n']:empty
-['minusword', 'y']:Token desconocido: minusword
-[':', ':']:Token desconocido: :
-['ws', '\n    ']:empty
 ['mayusword', 'PLUS']:Token desconocido: mayusword
 ['ws', ' ']:empty
-['minusword', 'r']:Token desconocido: minusword
+['minusword', 'expression']:Token desconocido: minusword
 ['ws', '\n  ']:empty
 ['|', '|']:Token desconocido: |
 ['ws', ' ']:empty
-['mayusword', 'MINUS']:Token desconocido: mayusword
-['ws', ' ']:empty
-['minusword', 'r']:Token desconocido: minusword
+['minusword', 'term']:Token desconocido: minusword
 ['ws', '\n']:empty
 [';', ';']:Token desconocido: ;
 ['ws', '\n']:empty
-['minusword', 'r']:Token desconocido: minusword
+['minusword', 'term']:Token desconocido: minusword
 [':', ':']:Token desconocido: :
 ['ws', '\n    ']:empty
-['minusword', 'f']:Token desconocido: minusword
+['mayusword', 'NUMBER']:Token desconocido: mayusword
 ['ws', ' ']:empty
-['minusword', 'v']:Token desconocido: minusword
-['ws', '\n  ']:empty
-['|', '|']:Token desconocido: |
-['ws', ' ']:empty
-['minusword', 'f']:Token desconocido: minusword
-['ws', '\n']:empty
-[';', ';']:Token desconocido: ;
-['ws', '\n']:empty
-['minusword', 'v']:Token desconocido: minusword
-[':', ':']:Token desconocido: :
-['ws', '\n    ']:empty
-['minusword', 'j']:Token desconocido: minusword
-['ws', ' ']:empty
-['minusword', 'v']:Token desconocido: minusword
-['ws', '\n  ']:empty
-['|', '|']:Token desconocido: |
-['ws', ' ']:empty
-['minusword', 'j']:Token desconocido: minusword
-['ws', '\n']:empty
-[';', ';']:Token desconocido: ;
-['ws', '\n']:empty
-['minusword', 'j']:Token desconocido: minusword
-[':', ':']:Token desconocido: :
-['ws', '\n    ']:empty
 ['mayusword', 'TIMES']:Token desconocido: mayusword
 ['ws', ' ']:empty
-['minusword', 'f']:Token desconocido: minusword
-['ws', '\n  ']:empty
-['|', '|']:Token desconocido: |
-['ws', ' ']:empty
-['mayusword', 'DIV']:Token desconocido: mayusword
-['ws', ' ']:empty
-['minusword', 'f']:Token desconocido: minusword
-['ws', '\n']:empty
-[';', ';']:Token desconocido: ;
-['ws', '\n']:empty
-['minusword', 'f']:Token desconocido: minusword
-[':', ':']:Token desconocido: :
-['ws', '\n    ']:empty
-['mayusword', 'LPAREN']:Token desconocido: mayusword
-['ws', ' ']:empty
-['minusword', 'e']:Token desconocido: minusword
-['ws', ' ']:empty
-['mayusword', 'RPAREN']:Token desconocido: mayusword
+['minusword', 'term']:Token desconocido: minusword
 ['ws', '\n  ']:empty
 ['|', '|']:Token desconocido: |
 ['ws', ' ']:empty
@@ -594,7 +148,10 @@
 ['ws', '\n  ']:empty
 ['|', '|']:Token desconocido: |
 ['ws', ' ']:empty
-['mayusword', 'ID']:Token desconocido: mayusword
+['mayusword', 'LPAREN']:Token desconocido: mayusword
+['ws', ' ']:empty
+['minusword', 'expression']:Token desconocido: minusword
+['ws', ' ']:empty
+['mayusword', 'RPAREN']:Token desconocido: mayusword
 ['ws', '\n']:empty
 [';', ';']:Token desconocido: ;
-['ws', '\n']:empty

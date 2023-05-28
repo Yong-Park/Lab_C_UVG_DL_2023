@@ -1,6 +1,8 @@
 import copy
 import pandas as pd
 from tabulate import tabulate
+import sys
+
 
 class SLRPARSING:
     def __init__(self, transitions, conjuntos, numbers, reglas):
@@ -109,6 +111,33 @@ class SLRPARSING:
                                     self.action.append([x,w,"r"+str(z)])
                                 # print()
                                 #enviar y obtener el follow del parametro
+        #revisar si hay conflictos
+        keys = []
+        values = []
+        for x in self.action:
+            key = (x[0], x[1])
+            value = x[2]
+
+            if key in keys:
+                index = keys.index(key)
+                values[index].append(value)
+            else:
+                keys.append(key)
+                values.append([value])
+        # Crear una lista de acciones únicas con duplicados agrupados
+        unique_actions = [[key[0], key[1], vals] for key, vals in zip(keys, values)]
+
+        # Imprimir las acciones únicas con duplicados agrupados
+        for action in unique_actions:
+            if len(action[2])>1:
+                action_str = f"[{action[0]}, {action[1]}]"
+                values_str = ", ".join(action[2])
+                print(f"Conflict in {action_str} = ({values_str})")
+                sys.exit()
+
+                
+
+        
         print("self.first: ", self.first)                     
         print("self.goto: ", self.goto)
         print("self.action: ",self.action)
