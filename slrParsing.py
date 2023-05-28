@@ -92,8 +92,9 @@ class SLRPARSING:
             for y in self.conjuntos[x]:
                 if y[1][len(y[1])-1] == ".":
                     # print("y: ",y)
-                    indice = y[1].index(".")
-                    if y[1][indice-1] != first:
+                    # indice = y[1].index(".")
+                    # print("y[1][indice-1] : ",y[1][indice-1] )
+                    if y[0] != first+"'":
                         trans_copy = copy.deepcopy(y)
                         trans_copy[1].remove(".")
                         for z in range(len(self.reglas)): #donde poner, seria el ultimo del parametro para el [x, ..., z]
